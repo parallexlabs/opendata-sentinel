@@ -1,0 +1,122 @@
+{
+  "config_hash": "659d5f12adeda3c9",
+  "dataset_id": "demo-requests",
+  "findings": [
+    {
+      "affected_count": 0,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "id",
+      "message": "Required field 'id' is fully populated",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "name",
+      "message": "Required field 'name' is fully populated",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "status",
+      "message": "Required field 'status' is fully populated",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "validity.type",
+      "evidence": {},
+      "field": "id",
+      "message": "Column 'id' matches type integer",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_FormatConsistency"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "validity.type",
+      "evidence": {},
+      "field": "amount",
+      "message": "Column 'amount' matches type integer",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_FormatConsistency"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "validity.range",
+      "evidence": {},
+      "field": "amount",
+      "message": "Column 'amount' values are within range",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_DomainConsistency"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "validity.regex",
+      "evidence": {},
+      "field": "postal_code",
+      "message": "Column 'postal_code' matches configured pattern",
+      "severity": "pass",
+      "standards_tags": [
+        "local:configured_pattern"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "uniqueness.primary_key",
+      "evidence": {},
+      "field": "id",
+      "message": "Primary key 'id' is unique",
+      "severity": "pass",
+      "standards_tags": [
+        "local:configured_key_uniqueness"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "domains.allowed_values",
+      "evidence": {},
+      "field": "status",
+      "message": "Column 'status' values are within domain",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_DomainConsistency"
+      ],
+      "suggested_action": null
+    }
+  ],
+  "run_at": "2026-10-01T00:00:00+00:00",
+  "schema_version": "1.0.0",
+  "source_uri": "samples/demo.csv",
+  "summary": {
+    "error": 0,
+    "pass": 9,
+    "warning": 0
+  }
+}

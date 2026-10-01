@@ -1,0 +1,1136 @@
+{
+  "code_version": "0.4.0",
+  "snapshot_hashes": {
+    "local-area-boundary": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+    "business-licences": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+    "public-streets": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+    "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+    "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+    "voting-places-2017": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71"
+  },
+  "full": {
+    "findings": [
+      {
+        "finding_id": "fce193e9140863a4",
+        "check_family": "relation",
+        "relation_id": "local_area_referential",
+        "dataset_id": "business-licences",
+        "severity": "error",
+        "message": "2 rows in business-licences.localarea lack a match in local-area-boundary.name",
+        "affected_count": 2,
+        "confidence": 0.85,
+        "evidence": {
+          "orphan_values": [
+            [
+              "SYNTHETIC-UNMATCHED-AREA",
+              2
+            ]
+          ],
+          "examples": [
+            {
+              "localarea": "SYNTHETIC-UNMATCHED-AREA"
+            }
+          ],
+          "parent_value_count": 22,
+          "normalization_mismatch_detected": false
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "3603a1a2c7b79b95",
+        "check_family": "relation",
+        "relation_id": "issued_requires_date",
+        "dataset_id": "business-licences",
+        "severity": "error",
+        "message": "When status='Issued', issueddate must be populated (2 violations)",
+        "affected_count": 2,
+        "confidence": 0.9,
+        "evidence": {
+          "examples": [
+            {
+              "businesstype": "SYNTHETIC-DEMO",
+              "issueddate": "",
+              "licencenumber": "SYNTHETIC-LICENCE-0000",
+              "licencersn": "SYNTHETIC-RSN-0000",
+              "status": "Issued"
+            },
+            {
+              "businesstype": "SYNTHETIC-DEMO",
+              "issueddate": "",
+              "licencenumber": "SYNTHETIC-LICENCE-0001",
+              "licencersn": "SYNTHETIC-RSN-0001",
+              "status": "Issued"
+            }
+          ]
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "7209342f8ded29e1",
+        "check_family": "relation",
+        "relation_id": "capital_budget_snapshot_drift",
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "warning",
+        "message": "133 shared projects differ on multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans between 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget and 2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "affected_count": 133,
+        "confidence": 0.8,
+        "evidence": {
+          "drift_examples": [
+            {
+              "project": "2019-2022 Housing Land Acquisition",
+              "left_value": 80985464.0,
+              "right_value": 150686188.0,
+              "delta": -69700724.0
+            },
+            {
+              "project": "Cambie Bridge - Seismic",
+              "left_value": 27000000.0,
+              "right_value": 0.0,
+              "delta": 27000000.0
+            },
+            {
+              "project": "Predevelopment funding program for housing projects on City-land",
+              "left_value": 14000000.0,
+              "right_value": 0.0,
+              "delta": 14000000.0
+            },
+            {
+              "project": "East Fraser Land Park Development: Area 1",
+              "left_value": 3091000.0,
+              "right_value": 12300000.0,
+              "delta": -9209000.0
+            },
+            {
+              "project": "2023-2026 New & upgraded connections",
+              "left_value": 8500000.0,
+              "right_value": 0.0,
+              "delta": 8500000.0
+            },
+            {
+              "project": "2023-2026 Gas Collection Infrastructure",
+              "left_value": 6074000.0,
+              "right_value": 0.0,
+              "delta": 6074000.0
+            },
+            {
+              "project": "Neighbourhood Energy Utility (NEU) Waste Heat Recovery Expansion",
+              "left_value": 20100000.0,
+              "right_value": 14200000.0,
+              "delta": 5900000.0
+            },
+            {
+              "project": "2023-2026 Green Infrastructure\u00a0renewal & upgrades - Growth projects",
+              "left_value": 5000000.0,
+              "right_value": 0.0,
+              "delta": 5000000.0
+            },
+            {
+              "project": "2019-2022 Capital Maintenance - Entertainment & Exhibition Facilities",
+              "left_value": 200000.0,
+              "right_value": 5146000.0,
+              "delta": -4946000.0
+            },
+            {
+              "project": "2023-2026 Capital Maintenance - Recreation Facilities",
+              "left_value": 4900000.0,
+              "right_value": 0.0,
+              "delta": 4900000.0
+            }
+          ]
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "f98ee86acf89aad4",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "voting-places-2017",
+        "severity": "error",
+        "message": "Primary key 'facility_name' has 2 duplicate values",
+        "affected_count": 2,
+        "confidence": 0.92,
+        "evidence": {
+          "field": "facility_name",
+          "check_id": "uniqueness.primary_key",
+          "baseline": "internal",
+          "duplicate_values": [
+            "Vancouver City Hall"
+          ]
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "d8880a0cecbb0b75",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "voting-places-2017",
+        "severity": "error",
+        "message": "unique-error: Row at position \"53\" has unique constraint violation in field \"facility_name\" at position \"2\": the same as in the row at position 3",
+        "affected_count": 1,
+        "confidence": 0.8,
+        "evidence": {
+          "field": "facility_name",
+          "check_id": "unique-error",
+          "baseline": "frictionless"
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "c8319d281efca670",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "error",
+        "message": "Primary key 'project_program_name' has 14 missing values",
+        "affected_count": 14,
+        "confidence": 0.92,
+        "evidence": {
+          "field": "project_program_name",
+          "check_id": "completeness.missing_primary_key",
+          "baseline": "internal"
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "75e5b8357476c433",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "error",
+        "message": "constraint-error: The cell \"\" in row at position \"31\" and field \"project_program_name\" at position \"4\" does not conform to a constraint: constraint \"required\" is \"True\"",
+        "affected_count": 14,
+        "confidence": 0.8,
+        "evidence": {
+          "field": "project_program_name",
+          "check_id": "constraint-error",
+          "baseline": "frictionless"
+        },
+        "actionable": null
+      }
+    ],
+    "evaluation": {
+      "precision": {
+        "point": 0.8,
+        "ci_low": 0.4,
+        "ci_high": 1.0,
+        "n": 5
+      },
+      "recall": null,
+      "actionable_yield": {
+        "point": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 0
+      },
+      "runtime_seconds": 0.256,
+      "peak_memory_mb": 237.703125,
+      "heuristic_score_spread": {
+        "business-licences": {
+          "point": 0.875,
+          "ci_low": 0.8404,
+          "ci_high": 0.9096,
+          "n": 2
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "point": 0.84,
+          "ci_low": 0.776,
+          "ci_high": 0.904,
+          "n": 3
+        },
+        "voting-places-2017": {
+          "point": 0.86,
+          "ci_low": 0.7768,
+          "ci_high": 0.9432,
+          "n": 2
+        }
+      },
+      "schema_findings": 4,
+      "relation_findings": 3,
+      "held_out_size": 5,
+      "details": {
+        "metric_unit": "reports, not independent issues",
+        "precision_interpretation": "provisional configured-rule label agreement, not municipal accuracy",
+        "actionability_interpretation": "requires a separate explicit human/domain judgement",
+        "reports_total": 7,
+        "unlabelled_reports": 2,
+        "predicted_held_out": 5,
+        "labelled_held_out": 5,
+        "unknown_labelled_findings": 0,
+        "recall_omitted": "provisional labels are not independent ground truth"
+      }
+    },
+    "runtime_seconds": 0.25649295799667016,
+    "peak_memory_mb": 237.703125,
+    "timing": {
+      "median_seconds": 0.256,
+      "min_seconds": 0.215,
+      "max_seconds": 0.364,
+      "repeats": 5
+    },
+    "memory": {
+      "median_mb": 237.7,
+      "min_mb": 236.0,
+      "max_mb": 238.1,
+      "repeats": 5
+    },
+    "injected_evaluation": {
+      "precision": {
+        "point": 0.86,
+        "ci_low": 0.76,
+        "ci_high": 0.94,
+        "n": 25
+      },
+      "recall": {
+        "point": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n": 25
+      },
+      "per_dataset": {
+        "business-licences": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 10
+          }
+        },
+        "voting-places-2017": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        },
+        "local-area-boundary": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        }
+      },
+      "mean_run_precision": {
+        "point": 0.86,
+        "ci_low": 0.76,
+        "ci_high": 0.94,
+        "n": 25
+      },
+      "precision_estimand": "mean run precision, conditional on a defined precision",
+      "precision_runs": {
+        "defined": 25,
+        "excluded": 0,
+        "total": 25
+      },
+      "pooled_precision": {
+        "point": 0.78125,
+        "numerator": 25,
+        "denominator": 32,
+        "n": 32,
+        "ci_low": null,
+        "ci_high": null
+      },
+      "recall_estimand": "evidence-confirmed injected recall",
+      "pooled_recall": {
+        "point": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n": 25
+      },
+      "defects_total": 25,
+      "findings_total": 32,
+      "true_positive_findings": 25,
+      "false_positive_findings": 7,
+      "clean_snapshot": {
+        "findings_total": 7,
+        "synthetic_marker_hits": 0,
+        "synthetic_marker_match_fraction": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 7
+        },
+        "synthetic_marker_matching_reports": 0,
+        "interpretation": "synthetic marker check, not a municipal false-positive-rate estimate"
+      },
+      "details": {
+        "bootstrap": {
+          "base_seed": 42,
+          "injection_seed": 42,
+          "resamples": 2000,
+          "recall_seed": 42,
+          "mean_run_precision_seed": 43,
+          "per_dataset_recall_seed": 44
+        },
+        "defect_hits": 25,
+        "defect_misses": 0,
+        "background_findings_per_run_median": 6,
+        "run_precisions": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          0.5,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "metadata": {
+      "exclusion_counts": {
+        "issued_requires_date": {
+          "missing_before_exclusions": 3,
+          "excluded": 1,
+          "remaining": 2
+        }
+      },
+      "schema_ablation": {
+        "sampling": "ordered prefix",
+        "row_cap": 5000,
+        "internal_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 5000,
+          "voting-places-2017": 52,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+        },
+        "frictionless_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 5000,
+          "voting-places-2017": 52,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+        },
+        "relation_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 17072,
+          "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 777,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592,
+          "voting-places-2017": 52
+        },
+        "internal_constraints": "required fields, primary-key uniqueness, configured types and numeric ranges",
+        "frictionless_constraints": "string fields, required and unique constraints only",
+        "unexecuted_tools": [
+          "Pandera",
+          "Great Expectations",
+          "dbt",
+          "Soda"
+        ]
+      },
+      "code_version": "0.4.0",
+      "snapshot_hashes": {
+        "local-area-boundary": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+        "business-licences": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+        "public-streets": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+        "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+        "voting-places-2017": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71"
+      },
+      "live_fetch": false,
+      "snapshot_dir": "data/snapshots"
+    }
+  },
+  "schema_only": {
+    "findings": [
+      {
+        "finding_id": "f98ee86acf89aad4",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "voting-places-2017",
+        "severity": "error",
+        "message": "Primary key 'facility_name' has 2 duplicate values",
+        "affected_count": 2,
+        "confidence": 0.92,
+        "evidence": {
+          "field": "facility_name",
+          "check_id": "uniqueness.primary_key",
+          "baseline": "internal",
+          "duplicate_values": [
+            "Vancouver City Hall"
+          ]
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "d8880a0cecbb0b75",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "voting-places-2017",
+        "severity": "error",
+        "message": "unique-error: Row at position \"53\" has unique constraint violation in field \"facility_name\" at position \"2\": the same as in the row at position 3",
+        "affected_count": 1,
+        "confidence": 0.8,
+        "evidence": {
+          "field": "facility_name",
+          "check_id": "unique-error",
+          "baseline": "frictionless"
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "c8319d281efca670",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "error",
+        "message": "Primary key 'project_program_name' has 14 missing values",
+        "affected_count": 14,
+        "confidence": 0.92,
+        "evidence": {
+          "field": "project_program_name",
+          "check_id": "completeness.missing_primary_key",
+          "baseline": "internal"
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "75e5b8357476c433",
+        "check_family": "schema",
+        "relation_id": null,
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "error",
+        "message": "constraint-error: The cell \"\" in row at position \"31\" and field \"project_program_name\" at position \"4\" does not conform to a constraint: constraint \"required\" is \"True\"",
+        "affected_count": 14,
+        "confidence": 0.8,
+        "evidence": {
+          "field": "project_program_name",
+          "check_id": "constraint-error",
+          "baseline": "frictionless"
+        },
+        "actionable": null
+      }
+    ],
+    "evaluation": {
+      "precision": {
+        "point": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n": 4
+      },
+      "recall": null,
+      "actionable_yield": {
+        "point": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 0
+      },
+      "runtime_seconds": 0.209,
+      "peak_memory_mb": 231.328125,
+      "heuristic_score_spread": {
+        "voting-places-2017": {
+          "point": 0.86,
+          "ci_low": 0.7768,
+          "ci_high": 0.9432,
+          "n": 2
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "point": 0.86,
+          "ci_low": 0.7768,
+          "ci_high": 0.9432,
+          "n": 2
+        }
+      },
+      "schema_findings": 4,
+      "relation_findings": 0,
+      "held_out_size": 5,
+      "details": {
+        "metric_unit": "reports, not independent issues",
+        "precision_interpretation": "provisional configured-rule label agreement, not municipal accuracy",
+        "actionability_interpretation": "requires a separate explicit human/domain judgement",
+        "reports_total": 4,
+        "unlabelled_reports": 0,
+        "predicted_held_out": 4,
+        "labelled_held_out": 4,
+        "unknown_labelled_findings": 0,
+        "recall_omitted": "provisional labels are not independent ground truth"
+      }
+    },
+    "runtime_seconds": 0.20947787500335835,
+    "peak_memory_mb": 231.328125,
+    "timing": {
+      "median_seconds": 0.209,
+      "min_seconds": 0.207,
+      "max_seconds": 0.332,
+      "repeats": 5
+    },
+    "memory": {
+      "median_mb": 231.3,
+      "min_mb": 231.1,
+      "max_mb": 232.3,
+      "repeats": 5
+    },
+    "injected_evaluation": {
+      "precision": {
+        "point": 0.75,
+        "ci_low": 0.6,
+        "ci_high": 0.9,
+        "n": 10
+      },
+      "recall": {
+        "point": 0.4,
+        "ci_low": 0.2,
+        "ci_high": 0.6,
+        "n": 25
+      },
+      "per_dataset": {
+        "business-licences": {
+          "recall": {
+            "point": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 10
+          }
+        },
+        "voting-places-2017": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        },
+        "local-area-boundary": {
+          "recall": {
+            "point": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 5
+          }
+        }
+      },
+      "mean_run_precision": {
+        "point": 0.75,
+        "ci_low": 0.6,
+        "ci_high": 0.9,
+        "n": 10
+      },
+      "precision_estimand": "mean run precision, conditional on a defined precision",
+      "precision_runs": {
+        "defined": 10,
+        "excluded": 15,
+        "total": 25
+      },
+      "pooled_precision": {
+        "point": 0.6666666666666666,
+        "numerator": 10,
+        "denominator": 15,
+        "n": 15,
+        "ci_low": null,
+        "ci_high": null
+      },
+      "recall_estimand": "evidence-confirmed injected recall",
+      "pooled_recall": {
+        "point": 0.4,
+        "ci_low": 0.2,
+        "ci_high": 0.6,
+        "n": 25
+      },
+      "defects_total": 25,
+      "findings_total": 15,
+      "true_positive_findings": 10,
+      "false_positive_findings": 5,
+      "clean_snapshot": {
+        "findings_total": 4,
+        "synthetic_marker_hits": 0,
+        "synthetic_marker_match_fraction": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 4
+        },
+        "synthetic_marker_matching_reports": 0,
+        "interpretation": "synthetic marker check, not a municipal false-positive-rate estimate"
+      },
+      "details": {
+        "bootstrap": {
+          "base_seed": 42,
+          "injection_seed": 42,
+          "resamples": 2000,
+          "recall_seed": 42,
+          "mean_run_precision_seed": 43,
+          "per_dataset_recall_seed": 44
+        },
+        "defect_hits": 10,
+        "defect_misses": 15,
+        "background_findings_per_run_median": 4,
+        "run_precisions": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "metadata": {
+      "exclusion_counts": {
+        "issued_requires_date": {
+          "missing_before_exclusions": 3,
+          "excluded": 1,
+          "remaining": 2
+        }
+      },
+      "schema_ablation": {
+        "sampling": "ordered prefix",
+        "row_cap": 5000,
+        "internal_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 5000,
+          "voting-places-2017": 52,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+        },
+        "frictionless_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 5000,
+          "voting-places-2017": 52,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+        },
+        "relation_rows": {},
+        "internal_constraints": "required fields, primary-key uniqueness, configured types and numeric ranges",
+        "frictionless_constraints": "string fields, required and unique constraints only",
+        "unexecuted_tools": [
+          "Pandera",
+          "Great Expectations",
+          "dbt",
+          "Soda"
+        ]
+      },
+      "code_version": "0.4.0",
+      "snapshot_hashes": {
+        "local-area-boundary": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+        "business-licences": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+        "public-streets": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+        "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+        "voting-places-2017": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71"
+      },
+      "live_fetch": false,
+      "snapshot_dir": "data/snapshots"
+    }
+  },
+  "relations_only": {
+    "findings": [
+      {
+        "finding_id": "fce193e9140863a4",
+        "check_family": "relation",
+        "relation_id": "local_area_referential",
+        "dataset_id": "business-licences",
+        "severity": "error",
+        "message": "2 rows in business-licences.localarea lack a match in local-area-boundary.name",
+        "affected_count": 2,
+        "confidence": 0.85,
+        "evidence": {
+          "orphan_values": [
+            [
+              "SYNTHETIC-UNMATCHED-AREA",
+              2
+            ]
+          ],
+          "examples": [
+            {
+              "localarea": "SYNTHETIC-UNMATCHED-AREA"
+            }
+          ],
+          "parent_value_count": 22,
+          "normalization_mismatch_detected": false
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "3603a1a2c7b79b95",
+        "check_family": "relation",
+        "relation_id": "issued_requires_date",
+        "dataset_id": "business-licences",
+        "severity": "error",
+        "message": "When status='Issued', issueddate must be populated (2 violations)",
+        "affected_count": 2,
+        "confidence": 0.9,
+        "evidence": {
+          "examples": [
+            {
+              "businesstype": "SYNTHETIC-DEMO",
+              "issueddate": "",
+              "licencenumber": "SYNTHETIC-LICENCE-0000",
+              "licencersn": "SYNTHETIC-RSN-0000",
+              "status": "Issued"
+            },
+            {
+              "businesstype": "SYNTHETIC-DEMO",
+              "issueddate": "",
+              "licencenumber": "SYNTHETIC-LICENCE-0001",
+              "licencersn": "SYNTHETIC-RSN-0001",
+              "status": "Issued"
+            }
+          ]
+        },
+        "actionable": null
+      },
+      {
+        "finding_id": "7209342f8ded29e1",
+        "check_family": "relation",
+        "relation_id": "capital_budget_snapshot_drift",
+        "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "severity": "warning",
+        "message": "133 shared projects differ on multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans between 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget and 2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+        "affected_count": 133,
+        "confidence": 0.8,
+        "evidence": {
+          "drift_examples": [
+            {
+              "project": "2019-2022 Housing Land Acquisition",
+              "left_value": 80985464.0,
+              "right_value": 150686188.0,
+              "delta": -69700724.0
+            },
+            {
+              "project": "Cambie Bridge - Seismic",
+              "left_value": 27000000.0,
+              "right_value": 0.0,
+              "delta": 27000000.0
+            },
+            {
+              "project": "Predevelopment funding program for housing projects on City-land",
+              "left_value": 14000000.0,
+              "right_value": 0.0,
+              "delta": 14000000.0
+            },
+            {
+              "project": "East Fraser Land Park Development: Area 1",
+              "left_value": 3091000.0,
+              "right_value": 12300000.0,
+              "delta": -9209000.0
+            },
+            {
+              "project": "2023-2026 New & upgraded connections",
+              "left_value": 8500000.0,
+              "right_value": 0.0,
+              "delta": 8500000.0
+            },
+            {
+              "project": "2023-2026 Gas Collection Infrastructure",
+              "left_value": 6074000.0,
+              "right_value": 0.0,
+              "delta": 6074000.0
+            },
+            {
+              "project": "Neighbourhood Energy Utility (NEU) Waste Heat Recovery Expansion",
+              "left_value": 20100000.0,
+              "right_value": 14200000.0,
+              "delta": 5900000.0
+            },
+            {
+              "project": "2023-2026 Green Infrastructure\u00a0renewal & upgrades - Growth projects",
+              "left_value": 5000000.0,
+              "right_value": 0.0,
+              "delta": 5000000.0
+            },
+            {
+              "project": "2019-2022 Capital Maintenance - Entertainment & Exhibition Facilities",
+              "left_value": 200000.0,
+              "right_value": 5146000.0,
+              "delta": -4946000.0
+            },
+            {
+              "project": "2023-2026 Capital Maintenance - Recreation Facilities",
+              "left_value": 4900000.0,
+              "right_value": 0.0,
+              "delta": 4900000.0
+            }
+          ]
+        },
+        "actionable": null
+      }
+    ],
+    "evaluation": {
+      "precision": {
+        "point": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 1
+      },
+      "recall": null,
+      "actionable_yield": {
+        "point": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 0
+      },
+      "runtime_seconds": 0.025,
+      "peak_memory_mb": 157.5,
+      "heuristic_score_spread": {
+        "business-licences": {
+          "point": 0.875,
+          "ci_low": 0.8404,
+          "ci_high": 0.9096,
+          "n": 2
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "point": 0.8,
+          "ci_low": 0.8,
+          "ci_high": 0.8,
+          "n": 1
+        }
+      },
+      "schema_findings": 0,
+      "relation_findings": 3,
+      "held_out_size": 5,
+      "details": {
+        "metric_unit": "reports, not independent issues",
+        "precision_interpretation": "provisional configured-rule label agreement, not municipal accuracy",
+        "actionability_interpretation": "requires a separate explicit human/domain judgement",
+        "reports_total": 3,
+        "unlabelled_reports": 2,
+        "predicted_held_out": 1,
+        "labelled_held_out": 1,
+        "unknown_labelled_findings": 0,
+        "recall_omitted": "provisional labels are not independent ground truth"
+      }
+    },
+    "runtime_seconds": 0.02519012500124518,
+    "peak_memory_mb": 157.5,
+    "timing": {
+      "median_seconds": 0.025,
+      "min_seconds": 0.025,
+      "max_seconds": 0.028,
+      "repeats": 5
+    },
+    "memory": {
+      "median_mb": 157.5,
+      "min_mb": 156.2,
+      "max_mb": 158.2,
+      "repeats": 5
+    },
+    "injected_evaluation": {
+      "precision": {
+        "point": 0.8824,
+        "ci_low": 0.7059,
+        "ci_high": 1.0,
+        "n": 17
+      },
+      "recall": {
+        "point": 0.6,
+        "ci_low": 0.4,
+        "ci_high": 0.8,
+        "n": 25
+      },
+      "per_dataset": {
+        "business-licences": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 10
+          }
+        },
+        "voting-places-2017": {
+          "recall": {
+            "point": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 5
+          }
+        },
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+          "recall": {
+            "point": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 5
+          }
+        },
+        "local-area-boundary": {
+          "recall": {
+            "point": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 5
+          }
+        }
+      },
+      "mean_run_precision": {
+        "point": 0.8824,
+        "ci_low": 0.7059,
+        "ci_high": 1.0,
+        "n": 17
+      },
+      "precision_estimand": "mean run precision, conditional on a defined precision",
+      "precision_runs": {
+        "defined": 17,
+        "excluded": 8,
+        "total": 25
+      },
+      "pooled_precision": {
+        "point": 0.8823529411764706,
+        "numerator": 15,
+        "denominator": 17,
+        "n": 17,
+        "ci_low": null,
+        "ci_high": null
+      },
+      "recall_estimand": "evidence-confirmed injected recall",
+      "pooled_recall": {
+        "point": 0.6,
+        "ci_low": 0.4,
+        "ci_high": 0.8,
+        "n": 25
+      },
+      "defects_total": 25,
+      "findings_total": 17,
+      "true_positive_findings": 15,
+      "false_positive_findings": 2,
+      "clean_snapshot": {
+        "findings_total": 3,
+        "synthetic_marker_hits": 0,
+        "synthetic_marker_match_fraction": {
+          "point": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 3
+        },
+        "synthetic_marker_matching_reports": 0,
+        "interpretation": "synthetic marker check, not a municipal false-positive-rate estimate"
+      },
+      "details": {
+        "bootstrap": {
+          "base_seed": 42,
+          "injection_seed": 42,
+          "resamples": 2000,
+          "recall_seed": 42,
+          "mean_run_precision_seed": 43,
+          "per_dataset_recall_seed": 44
+        },
+        "defect_hits": 15,
+        "defect_misses": 10,
+        "background_findings_per_run_median": 3,
+        "run_precisions": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.0,
+          null,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "metadata": {
+      "exclusion_counts": {
+        "issued_requires_date": {
+          "missing_before_exclusions": 3,
+          "excluded": 1,
+          "remaining": 2
+        }
+      },
+      "schema_ablation": {
+        "sampling": "ordered prefix",
+        "row_cap": 5000,
+        "internal_rows": {},
+        "frictionless_rows": {},
+        "relation_rows": {
+          "local-area-boundary": 22,
+          "business-licences": 200,
+          "public-streets": 17072,
+          "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 777,
+          "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592,
+          "voting-places-2017": 52
+        },
+        "internal_constraints": "required fields, primary-key uniqueness, configured types and numeric ranges",
+        "frictionless_constraints": "string fields, required and unique constraints only",
+        "unexecuted_tools": [
+          "Pandera",
+          "Great Expectations",
+          "dbt",
+          "Soda"
+        ]
+      },
+      "code_version": "0.4.0",
+      "snapshot_hashes": {
+        "local-area-boundary": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+        "business-licences": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+        "public-streets": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+        "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+        "voting-places-2017": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71"
+      },
+      "live_fetch": false,
+      "snapshot_dir": "data/snapshots"
+    }
+  }
+}

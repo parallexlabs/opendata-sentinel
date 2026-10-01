@@ -1,0 +1,13 @@
+dataset:
+  id: local-area-boundary
+  expected_crs: EPSG:4326
+  geometry_column: geometry
+
+checks:
+  completeness:
+    required: [name]
+    geometry_required: true
+  geometry:
+    allowed_types: [polygon, multipolygon]
+  crs:
+    require_present: true

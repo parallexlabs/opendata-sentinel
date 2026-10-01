@@ -1,0 +1,22 @@
+dataset:
+  id: demo-requests
+  primary_key: id
+
+checks:
+  completeness:
+    required: [id, name, status]
+  validity:
+    types:
+      id: integer
+      amount: integer
+    ranges:
+      amount:
+        min: 0
+        max: 1000000
+    regex:
+      postal_code: "^[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]$"
+  uniqueness:
+    primary_key: id
+  domains:
+    fields:
+      status: [open, closed, outstanding]

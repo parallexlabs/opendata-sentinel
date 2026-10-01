@@ -1,0 +1,1 @@
+"""Optional bundled plugin examples."""

@@ -1,0 +1,127 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opendata-sentinel"
+version = "0.4.0"
+description = "Open-data quality assurance for Canadian municipalities"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [{ name = "ParalleX Labs Inc." }]
+keywords = ["open-data", "gis", "data-quality", "municipal"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+dependencies = [
+    "geopandas>=0.14",
+    "httpx>=0.27",
+    "jinja2>=3.1",
+    "jsonschema>=4.21",
+    "pandas>=2.1",
+    "pydantic>=2.5",
+    "pyogrio>=0.7",
+    "pyproj>=3.6",
+    "pyyaml>=6.0",
+    "shapely>=2.0",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+benchmark = [
+    "pyarrow>=14.0",
+    "frictionless>=5.0",
+]
+dev = [
+    "hatchling>=1.27",
+    "beautifulsoup4>=4.12",
+    "mypy>=1.8",
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.25",
+    "pandas-stubs>=2.1",
+    "pyarrow>=14.0",
+    "pyright>=1.1",
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "ruff>=0.3",
+    "types-PyYAML>=6.0",
+    "types-jsonschema>=4.21",
+    "frictionless>=5.0",
+    "mkdocstrings[python]>=0.24",
+]
+
+[project.scripts]
+civic-data-qa = "civic_data_qa.cli.main:app"
+
+[project.entry-points."civic_data_qa.checks"]
+completeness_required = "civic_data_qa.checks.completeness:RequiredFieldsCheck"
+completeness_geometry = "civic_data_qa.checks.completeness:GeometryNotNullCheck"
+validity_type = "civic_data_qa.checks.validity:TypeCheck"
+validity_range = "civic_data_qa.checks.validity:RangeCheck"
+validity_regex = "civic_data_qa.checks.validity:RegexCheck"
+uniqueness_pk = "civic_data_qa.checks.uniqueness:PrimaryKeyCheck"
+timeliness_modified = "civic_data_qa.checks.timeliness:DatasetModifiedCheck"
+timeliness_recency = "civic_data_qa.checks.timeliness:FieldRecencyCheck"
+consistency_cross = "civic_data_qa.checks.consistency:CrossFieldCheck"
+geometry_valid = "civic_data_qa.checks.geometry:GeometryValidCheck"
+geometry_type = "civic_data_qa.checks.geometry:GeometryTypeCheck"
+crs_present = "civic_data_qa.checks.crs:CrsPresentCheck"
+crs_expected = "civic_data_qa.checks.crs:CrsExpectedCheck"
+domains_allowed = "civic_data_qa.checks.domains:AllowedValuesCheck"
+metadata_required = "civic_data_qa.checks.metadata:MetadataRequiredCheck"
+privacy_pattern = "civic_data_qa.checks.privacy:PatternCheck"
+demo_row_count = "civic_data_qa.plugins_ext.demo_check:DemoRowCountCheck"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/civic_data_qa"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/civic_data_qa", "schemas", "samples", "examples", "README.md", "LICENSE"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["B008"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["civic_data_qa"]
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["geopandas.*", "pyogrio.*", "shapely.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "network: tests that call live public APIs (opt-in)",
+]
+
+[tool.coverage.run]
+source = ["civic_data_qa"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+reportMissingTypeStubs = false

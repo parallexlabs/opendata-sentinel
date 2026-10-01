@@ -1,0 +1,54 @@
+{
+  "exclusion_counts": {
+    "issued_requires_date": {
+      "missing_before_exclusions": 3,
+      "excluded": 1,
+      "remaining": 2
+    }
+  },
+  "schema_ablation": {
+    "sampling": "ordered prefix",
+    "row_cap": 5000,
+    "internal_rows": {
+      "local-area-boundary": 22,
+      "business-licences": 200,
+      "public-streets": 5000,
+      "voting-places-2017": 52,
+      "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+    },
+    "frictionless_rows": {
+      "local-area-boundary": 22,
+      "business-licences": 200,
+      "public-streets": 5000,
+      "voting-places-2017": 52,
+      "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592
+    },
+    "relation_rows": {
+      "local-area-boundary": 22,
+      "business-licences": 200,
+      "public-streets": 17072,
+      "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 777,
+      "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": 592,
+      "voting-places-2017": 52
+    },
+    "internal_constraints": "required fields, primary-key uniqueness, configured types and numeric ranges",
+    "frictionless_constraints": "string fields, required and unique constraints only",
+    "unexecuted_tools": [
+      "Pandera",
+      "Great Expectations",
+      "dbt",
+      "Soda"
+    ]
+  },
+  "code_version": "0.4.0",
+  "snapshot_hashes": {
+    "local-area-boundary": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+    "business-licences": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+    "public-streets": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+    "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+    "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+    "voting-places-2017": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71"
+  },
+  "live_fetch": false,
+  "snapshot_dir": "data/snapshots"
+}

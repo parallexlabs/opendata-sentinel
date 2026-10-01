@@ -1,0 +1,7 @@
+{
+  "dataset_id": "public-streets",
+  "chunks": [
+    "public-streets_0000.parquet",
+    "public-streets_0001.parquet"
+  ]
+}

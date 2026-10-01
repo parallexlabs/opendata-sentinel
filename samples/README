@@ -1,0 +1,12 @@
+# Demonstration samples
+
+Local fixture counts and retrieval labels below are local observations, externally unverified. The public sources are linked per row. Contains information licensed under the Open Government Licence - Vancouver. The City does not endorse this tool.
+
+| File | Source URL | Licence URL | Representation |
+|---|---|---|---|
+| `demo.csv` | [Repository fixture](demo.csv) | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) | Synthetic tabular fixture |
+| `business-licences.csv` | [Generator](../scripts/generate_business_fixture.py) | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) | 200 wholly synthetic rows; not a City extract |
+| `local-area-boundary.geojson` | [City catalogue](https://opendata.vancouver.ca/explore/dataset/local-area-boundary/) | [OGL-Vancouver](https://opendata.vancouver.ca/pages/licence/) | Local extract, retrieval label 2026-09-28 |
+| `public-streets.geojson` | [City catalogue](https://opendata.vancouver.ca/explore/dataset/public-streets/) | [OGL-Vancouver](https://opendata.vancouver.ca/pages/licence/) | 300 features, retrieval label 2026-09-28 |
+
+Business identifiers, dates and categories are generated from literals and counters. Empty business names intentionally demonstrate a required-field error. No real business record is redistributed. Do not use City logos or imply endorsement. See [data licences](../docs/DATA_LICENCES.md).

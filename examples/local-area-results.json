@@ -1,0 +1,86 @@
+{
+  "config_hash": "25b2fd7a5a906098",
+  "dataset_id": "local-area-boundary",
+  "findings": [
+    {
+      "affected_count": 0,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "name",
+      "message": "Required field 'name' is fully populated",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "completeness.geometry_not_null",
+      "evidence": {},
+      "field": "geometry",
+      "message": "Geometry column 'geometry' has no null values",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "geometry.valid",
+      "evidence": {},
+      "field": null,
+      "message": "All non-null geometries are valid",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_TopologicalConsistency"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "geometry.type_allowed",
+      "evidence": {},
+      "field": null,
+      "message": "All non-null geometries match allowed types",
+      "severity": "pass",
+      "standards_tags": [
+        "local:configured_geometry_type"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "crs.present",
+      "evidence": {},
+      "field": null,
+      "message": "CRS is defined: EPSG:4326",
+      "severity": "pass",
+      "standards_tags": [
+        "local:crs_presence"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "crs.expected",
+      "evidence": {},
+      "field": null,
+      "message": "CRS matches expected EPSG:4326",
+      "severity": "pass",
+      "standards_tags": [
+        "local:configured_crs_match"
+      ],
+      "suggested_action": null
+    }
+  ],
+  "run_at": "2026-10-01T00:00:00+00:00",
+  "schema_version": "1.0.0",
+  "source_uri": "samples/local-area-boundary.geojson",
+  "summary": {
+    "error": 0,
+    "pass": 6,
+    "warning": 0
+  }
+}

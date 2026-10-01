@@ -1,0 +1,6 @@
+{
+  "name": "TestLayer",
+  "description": "Fixture layer",
+  "maxRecordCount": 1,
+  "objectIdField": "OBJECTID"
+}

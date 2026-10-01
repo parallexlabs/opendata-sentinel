@@ -1,0 +1,132 @@
+[
+  {
+    "finding_id": "fce193e9140863a4",
+    "check_family": "relation",
+    "relation_id": "local_area_referential",
+    "dataset_id": "business-licences",
+    "severity": "error",
+    "message": "2 rows in business-licences.localarea lack a match in local-area-boundary.name",
+    "affected_count": 2,
+    "confidence": 0.85,
+    "evidence": {
+      "orphan_values": [
+        [
+          "SYNTHETIC-UNMATCHED-AREA",
+          2
+        ]
+      ],
+      "examples": [
+        {
+          "localarea": "SYNTHETIC-UNMATCHED-AREA"
+        }
+      ],
+      "parent_value_count": 22,
+      "normalization_mismatch_detected": false
+    },
+    "actionable": null
+  },
+  {
+    "finding_id": "3603a1a2c7b79b95",
+    "check_family": "relation",
+    "relation_id": "issued_requires_date",
+    "dataset_id": "business-licences",
+    "severity": "error",
+    "message": "When status='Issued', issueddate must be populated (2 violations)",
+    "affected_count": 2,
+    "confidence": 0.9,
+    "evidence": {
+      "examples": [
+        {
+          "businesstype": "SYNTHETIC-DEMO",
+          "issueddate": "",
+          "licencenumber": "SYNTHETIC-LICENCE-0000",
+          "licencersn": "SYNTHETIC-RSN-0000",
+          "status": "Issued"
+        },
+        {
+          "businesstype": "SYNTHETIC-DEMO",
+          "issueddate": "",
+          "licencenumber": "SYNTHETIC-LICENCE-0001",
+          "licencersn": "SYNTHETIC-RSN-0001",
+          "status": "Issued"
+        }
+      ]
+    },
+    "actionable": null
+  },
+  {
+    "finding_id": "7209342f8ded29e1",
+    "check_family": "relation",
+    "relation_id": "capital_budget_snapshot_drift",
+    "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+    "severity": "warning",
+    "message": "133 shared projects differ on multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans between 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget and 2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+    "affected_count": 133,
+    "confidence": 0.8,
+    "evidence": {
+      "drift_examples": [
+        {
+          "project": "2019-2022 Housing Land Acquisition",
+          "left_value": 80985464.0,
+          "right_value": 150686188.0,
+          "delta": -69700724.0
+        },
+        {
+          "project": "Cambie Bridge - Seismic",
+          "left_value": 27000000.0,
+          "right_value": 0.0,
+          "delta": 27000000.0
+        },
+        {
+          "project": "Predevelopment funding program for housing projects on City-land",
+          "left_value": 14000000.0,
+          "right_value": 0.0,
+          "delta": 14000000.0
+        },
+        {
+          "project": "East Fraser Land Park Development: Area 1",
+          "left_value": 3091000.0,
+          "right_value": 12300000.0,
+          "delta": -9209000.0
+        },
+        {
+          "project": "2023-2026 New & upgraded connections",
+          "left_value": 8500000.0,
+          "right_value": 0.0,
+          "delta": 8500000.0
+        },
+        {
+          "project": "2023-2026 Gas Collection Infrastructure",
+          "left_value": 6074000.0,
+          "right_value": 0.0,
+          "delta": 6074000.0
+        },
+        {
+          "project": "Neighbourhood Energy Utility (NEU) Waste Heat Recovery Expansion",
+          "left_value": 20100000.0,
+          "right_value": 14200000.0,
+          "delta": 5900000.0
+        },
+        {
+          "project": "2023-2026 Green Infrastructure\u00a0renewal & upgrades - Growth projects",
+          "left_value": 5000000.0,
+          "right_value": 0.0,
+          "delta": 5000000.0
+        },
+        {
+          "project": "2019-2022 Capital Maintenance - Entertainment & Exhibition Facilities",
+          "left_value": 200000.0,
+          "right_value": 5146000.0,
+          "delta": -4946000.0
+        },
+        {
+          "project": "2023-2026 Capital Maintenance - Recreation Facilities",
+          "left_value": 4900000.0,
+          "right_value": 0.0,
+          "delta": 4900000.0
+        }
+      ]
+    },
+    "actionable": null
+  }
+]

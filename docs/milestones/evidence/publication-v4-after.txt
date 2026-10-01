@@ -1,0 +1,48 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- $CHECKOUT/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: $CHECKOUT
+configfile: pyproject.toml
+plugins: cov-7.1.0, platformdirs-4.12.1, anyio-4.15.1
+collecting ... collected 38 items
+
+tests/unit/test_publication_v4.py::test_f1_connector_claim_matches_implemented_api PASSED [  2%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[counts-https://other.example/records] PASSED [  5%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[counts-http://127.0.0.1:8765/records] PASSED [  7%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[relations-https://other.example/records] PASSED [ 10%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[relations-http://127.0.0.1:8765/records] PASSED [ 13%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[schema-https://other.example/records] PASSED [ 15%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[schema-http://127.0.0.1:8765/records] PASSED [ 18%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-counts-https://other.example/records] PASSED [ 21%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-counts-http://127.0.0.1:8765/records] PASSED [ 23%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-pages-https://other.example/records] PASSED [ 26%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-pages-http://127.0.0.1:8765/records] PASSED [ 28%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-export-https://other.example/records] PASSED [ 31%]
+tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-export-http://127.0.0.1:8765/records] PASSED [ 34%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[1000000000] PASSED [ 36%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[inf] PASSED [ 39%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[nan] PASSED [ 42%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[-inf] PASSED [ 44%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[invalid] PASSED [ 47%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[-3] PASSED [ 50%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[0] PASSED [ 52%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[2.5] PASSED [ 55%]
+tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[Wed, 21 Oct 2015 07:28:00 GMT] PASSED [ 57%]
+tests/unit/test_publication_v4.py::test_f3_total_retry_wait_budget PASSED [ 60%]
+tests/unit/test_publication_v4.py::test_retry_elapsed_budget_stops_attempts[0] PASSED [ 63%]
+tests/unit/test_publication_v4.py::test_retry_elapsed_budget_stops_attempts[5] PASSED [ 65%]
+tests/unit/test_publication_v4.py::test_retry_configuration_rejects_invalid_budgets[options0] PASSED [ 68%]
+tests/unit/test_publication_v4.py::test_retry_configuration_rejects_invalid_budgets[options1] PASSED [ 71%]
+tests/unit/test_publication_v4.py::test_retry_configuration_rejects_invalid_budgets[options2] PASSED [ 73%]
+tests/unit/test_publication_v4.py::test_retry_configuration_rejects_invalid_budgets[options3] PASSED [ 76%]
+tests/unit/test_publication_v4.py::test_retry_configuration_rejects_invalid_budgets[options4] PASSED [ 78%]
+tests/unit/test_publication_v4.py::test_redirect_revalidates_same_origin_dns_and_closes_transport PASSED [ 81%]
+tests/unit/test_publication_v4.py::test_same_origin_nondefault_port_preserves_post_body PASSED [ 84%]
+tests/unit/test_publication_v4.py::test_f4_readme_test_temp_directory_from_fresh_layout PASSED [ 86%]
+tests/unit/test_publication_v4.py::test_f5_actual_bootstrap_seeds_are_emitted PASSED [ 89%]
+tests/unit/test_publication_v4.py::test_f6_provisional_errors_do_not_become_actionable PASSED [ 92%]
+tests/unit/test_publication_v4.py::test_f7_public_ref_scan_rejects_unselected_refs PASSED [ 94%]
+tests/unit/test_publication_v4.py::test_regenerated_artifacts_have_no_automatic_actionability PASSED [ 97%]
+tests/unit/test_publication_v4.py::test_documentation_has_no_unresolved_sample_readme_links PASSED [100%]
+
+============================== 38 passed in 1.03s ==============================

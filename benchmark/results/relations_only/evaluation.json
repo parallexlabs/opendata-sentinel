@@ -1,0 +1,45 @@
+{
+  "precision": {
+    "point": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "n": 1
+  },
+  "recall": null,
+  "actionable_yield": {
+    "point": null,
+    "ci_low": null,
+    "ci_high": null,
+    "n": 0
+  },
+  "runtime_seconds": 0.025,
+  "peak_memory_mb": 157.5,
+  "heuristic_score_spread": {
+    "business-licences": {
+      "point": 0.875,
+      "ci_low": 0.8404,
+      "ci_high": 0.9096,
+      "n": 2
+    },
+    "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+      "point": 0.8,
+      "ci_low": 0.8,
+      "ci_high": 0.8,
+      "n": 1
+    }
+  },
+  "schema_findings": 0,
+  "relation_findings": 3,
+  "held_out_size": 5,
+  "details": {
+    "metric_unit": "reports, not independent issues",
+    "precision_interpretation": "provisional configured-rule label agreement, not municipal accuracy",
+    "actionability_interpretation": "requires a separate explicit human/domain judgement",
+    "reports_total": 3,
+    "unlabelled_reports": 2,
+    "predicted_held_out": 1,
+    "labelled_held_out": 1,
+    "unknown_labelled_findings": 0,
+    "recall_omitted": "provisional labels are not independent ground truth"
+  }
+}

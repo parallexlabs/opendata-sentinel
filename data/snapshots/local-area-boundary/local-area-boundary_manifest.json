@@ -1,0 +1,6 @@
+{
+  "dataset_id": "local-area-boundary",
+  "chunks": [
+    "local-area-boundary_0000.parquet"
+  ]
+}

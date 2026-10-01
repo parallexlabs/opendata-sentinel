@@ -1,0 +1,73 @@
+........................................................................ [ 38%]
+........................................................................ [ 76%]
+............................................                             [100%]
+=============================== warnings summary ===============================
+tests/unit/test_v02_regressions.py::test_timeliness_missing_and_unparsable_dates_reported
+  <checkout>/src/civic_data_qa/checks/timeliness.py:83: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+    dates = pd.to_datetime(series, errors="coerce", utc=True)
+
+tests/unit/test_v02_regressions.py::test_empty_geometry_counts_as_invalid
+  <checkout>/src/civic_data_qa/checks/geometry.py:38: UserWarning: GeoSeries.notna() previously returned False for both missing (None) and empty geometries. Now, it only returns False for missing values. Since the calling GeoSeries contains empty geometries, the result has changed compared to previous versions of GeoPandas.
+  Given a GeoSeries 's', you can use '~s.is_empty & s.notna()' to get back the old behaviour.
+  
+  To further ignore this warning, you can do: 
+  import warnings; warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
+    present = geoms.notna() & geoms.apply(lambda g: g is not None)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.11.15-final-0 _______________
+
+Name                                             Stmts   Miss  Cover   Missing
+------------------------------------------------------------------------------
+src/civic_data_qa/__init__.py                        4      0   100%
+src/civic_data_qa/benchmark/__init__.py              4      0   100%
+src/civic_data_qa/benchmark/confidence.py           22      3    86%   28, 31, 45
+src/civic_data_qa/benchmark/evaluate.py             99      5    95%   71, 108-109, 111-112
+src/civic_data_qa/benchmark/ingest.py              119     18    85%   32, 50, 55, 59, 97, 101, 123, 139-152, 188-190, 203
+src/civic_data_qa/benchmark/injected.py            444     34    92%   203, 220, 224, 229, 268, 279, 287, 381, 386, 398, 401-409, 412, 417, 421, 428, 432, 437, 502, 697-705, 716
+src/civic_data_qa/benchmark/manifest.py             22      2    91%   15, 24
+src/civic_data_qa/benchmark/memory_probe.py         52      5    90%   30-32, 40, 80
+src/civic_data_qa/benchmark/models.py               84      1    99%   113
+src/civic_data_qa/benchmark/relations.py           206     29    86%   36, 50, 64, 77, 145, 176, 191, 198, 240, 244, 248, 252-253, 265, 293, 317-325, 380, 392, 406, 416, 446, 462
+src/civic_data_qa/benchmark/runner.py              165     13    92%   38, 54, 74, 103, 153-155, 159, 196, 250, 285, 333-340
+src/civic_data_qa/benchmark/schema_baseline.py     149     20    87%   115-116, 141-142, 184-188, 194-198, 209-210, 220, 257-258, 262, 264, 276
+src/civic_data_qa/benchmark/snapshots.py           172     12    93%   83-84, 149, 214-215, 224-227, 231, 239, 243
+src/civic_data_qa/checks/__init__.py                 0      0   100%
+src/civic_data_qa/checks/base.py                     5      0   100%
+src/civic_data_qa/checks/completeness.py            28      3    89%   18-28, 60
+src/civic_data_qa/checks/consistency.py             27      6    78%   20, 22, 25-36, 51
+src/civic_data_qa/checks/crs.py                     36      4    89%   24, 60, 73, 84
+src/civic_data_qa/checks/domains.py                 17      1    94%   17
+src/civic_data_qa/checks/geometry.py                54     10    81%   22-24, 37, 67, 70, 74, 79, 82, 89
+src/civic_data_qa/checks/metadata.py                14      0   100%
+src/civic_data_qa/checks/privacy.py                 30      2    93%   22, 30
+src/civic_data_qa/checks/timeliness.py              53      7    87%   17, 27, 30, 52, 69, 71, 125
+src/civic_data_qa/checks/uniqueness.py              27      2    93%   16, 18
+src/civic_data_qa/checks/validity.py                68      8    88%   24-25, 38, 41, 46, 76, 121, 129
+src/civic_data_qa/cli/__init__.py                    0      0   100%
+src/civic_data_qa/cli/main.py                      160     24    85%   64, 70, 74, 115, 120, 145, 169-171, 181-186, 222-224, 260-261, 264, 287, 289-290, 298
+src/civic_data_qa/config.py                         97      3    97%   134-135, 137
+src/civic_data_qa/engine.py                         62      1    98%   39
+src/civic_data_qa/models.py                         61      0   100%
+src/civic_data_qa/plugins.py                        16      0   100%
+src/civic_data_qa/plugins_ext/__init__.py            0      0   100%
+src/civic_data_qa/plugins_ext/demo_check.py         14      2    86%   16, 28
+src/civic_data_qa/reporters/__init__.py              4      0   100%
+src/civic_data_qa/reporters/backlog.py              22      1    95%   52
+src/civic_data_qa/reporters/html.py                 10      0   100%
+src/civic_data_qa/reporters/json_report.py           9      1    89%   17
+src/civic_data_qa/sources/__init__.py                2      0   100%
+src/civic_data_qa/sources/arcgis.py                 68      8    88%   28, 31, 37, 64, 78, 80, 84, 115
+src/civic_data_qa/sources/ckan.py                   48      5    90%   20, 44, 48, 53, 79
+src/civic_data_qa/sources/files.py                  40      7    82%   34-39, 45
+src/civic_data_qa/sources/http_client.py            85     13    85%   40, 47, 74-76, 79-80, 94-96, 110-112
+src/civic_data_qa/sources/loader.py                 35      1    97%   32
+src/civic_data_qa/sources/socrata.py                73      8    89%   28, 47, 73, 79, 82-83, 86, 114
+src/civic_data_qa/sources/url_policy.py             46      6    87%   34, 48, 61, 65, 83-84
+src/civic_data_qa/standards.py                       5      0   100%
+------------------------------------------------------------------------------
+TOTAL                                             2758    265    90%
+Coverage JSON written to file state/coverage-v3.json
+Required test coverage of 90% reached. Total coverage: 90.39%
+188 passed, 1 deselected, 2 warnings in 5.62s

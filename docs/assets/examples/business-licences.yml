@@ -1,0 +1,11 @@
+dataset:
+  id: business-licences
+  primary_key: licencenumber
+
+checks:
+  completeness:
+    required: [licencenumber, businessname]
+  uniqueness:
+    primary_key: licencenumber
+  privacy:
+    enabled: true

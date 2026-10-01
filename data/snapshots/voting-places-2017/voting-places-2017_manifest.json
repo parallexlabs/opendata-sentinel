@@ -1,0 +1,6 @@
+{
+  "dataset_id": "voting-places-2017",
+  "chunks": [
+    "voting-places-2017_0000.parquet"
+  ]
+}

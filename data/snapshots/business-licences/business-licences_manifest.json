@@ -1,0 +1,10 @@
+{
+  "dataset_id": "business-licences",
+  "chunks": [
+    "business-licences_0000.parquet"
+  ],
+  "representation": "synthetic",
+  "source_url": "scripts/generate_business_fixture.py",
+  "licence": "Apache-2.0",
+  "licence_url": "https://www.apache.org/licenses/LICENSE-2.0"
+}

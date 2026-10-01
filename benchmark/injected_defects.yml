@@ -1,0 +1,52 @@
+version: "2.0.0"
+seed: 42
+instances_per_defect: 5
+
+defects:
+  - defect_id: inj_ref_orphan
+    type: broken_reference
+    dataset_id: business-licences
+    field: localarea
+    row_key_field: licencenumber
+    injected_value: INJECTED_ORPHAN_AREA
+    expected_finding: local_area_referential
+    description: Licence localarea references a value absent from local-area-boundary
+
+  - defect_id: inj_dup_key
+    type: duplicate_key
+    dataset_id: voting-places-2017
+    field: facility_name
+    row_key_field: voting_place_id
+    expected_finding: uniqueness.primary_key
+    description: Duplicate facility_name injected into voting places snapshot
+
+  - defect_id: inj_out_of_range
+    type: out_of_range
+    dataset_id: 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    field: multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans
+    row_key_field: project_program_name
+    injected_value: "-999999"
+    min_value: 0
+    expected_finding: validity.range
+    description: Negative budget value outside declared minimum
+
+  - defect_id: inj_schema_drift
+    type: schema_drift
+    dataset_id: local-area-boundary
+    rename_field: name
+    renamed_to: boundary_name
+    join_key: geo_point_2d
+    compare_field: name
+    expected_finding: same_dataset_schema_drift
+    description: Column renamed only in snapshot b (schema change, not value drift)
+
+  - defect_id: inj_cross_field
+    type: cross_field_violation
+    dataset_id: business-licences
+    row_key_field: licencenumber
+    when_field: status
+    when_value: Issued
+    then_field: issueddate
+    clear_value: true
+    expected_finding: issued_requires_date
+    description: Issued licence with cleared issueddate

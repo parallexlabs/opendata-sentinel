@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- <checkout>/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: <checkout>
+configfile: pyproject.toml
+plugins: cov-7.1.0, platformdirs-4.12.1, anyio-4.15.1
+collecting ... collected 12 items / 5 deselected / 7 selected
+
+tests/unit/test_publication_v2.py::test_f1_public_import_is_separate_and_full_history_ci PASSED [ 14%]
+tests/unit/test_publication_v2.py::test_f2_macro_precision_is_not_serialized_as_pooled PASSED [ 28%]
+tests/unit/test_publication_v2.py::test_f3_provisional_true_positive_does_not_establish_actionability PASSED [ 42%]
+tests/unit/test_publication_v2.py::test_f4_comparison_declares_ordered_prefix_and_unequal_coverage PASSED [ 57%]
+tests/unit/test_publication_v2.py::test_f5_historical_reports_and_environment_are_traceable PASSED [ 71%]
+tests/unit/test_publication_v2.py::test_f6_prior_art_capabilities_and_bounded_contribution PASSED [ 85%]
+tests/unit/test_publication_v2.py::test_f7_installation_declares_benchmark_extra_and_checkout PASSED [100%]
+
+======================= 7 passed, 5 deselected in 0.28s ========================

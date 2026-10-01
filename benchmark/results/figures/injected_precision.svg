@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" role="img">
+<title>Mean run precision, defined runs (95% CI)</title>
+<text x="240" y="22" text-anchor="middle" font-size="14">Mean run precision, defined runs (95% CI)</text>
+<text x="12" y="140" font-size="11" transform="rotate(-90 12,140)">Defined run mean</text>
+<rect x="60" y="100" width="90" height="120" fill="#2563eb"/>
+<line x1="105" y1="76" x2="105" y2="124" stroke="#1e3a8a" stroke-width="2"/>
+<text x="105" y="240" text-anchor="middle" font-size="10">Schema-only</text>
+<text x="105" y="94" text-anchor="middle" font-size="10">0.75</text>
+<rect x="185" y="79" width="90" height="141" fill="#2563eb"/>
+<line x1="230" y1="60" x2="230" y2="108" stroke="#1e3a8a" stroke-width="2"/>
+<text x="230" y="240" text-anchor="middle" font-size="10">Relations</text>
+<text x="230" y="73" text-anchor="middle" font-size="10">0.88</text>
+<rect x="310" y="83" width="90" height="137" fill="#2563eb"/>
+<line x1="355" y1="70" x2="355" y2="99" stroke="#1e3a8a" stroke-width="2"/>
+<text x="355" y="240" text-anchor="middle" font-size="10">Combined</text>
+<text x="355" y="77" text-anchor="middle" font-size="10">0.86</text>
+</svg>

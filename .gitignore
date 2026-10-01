@@ -1,0 +1,20 @@
+*.egg-info/
+*.pyc
+.DS_Store
+.coverage
+.pytest_cache/
+.venv/
+__pycache__/
+build/
+dist/
+htmlcov/
+benchmark/output/
+benchmark/.frictionless/
+research/
+
+# Only generated synthetic business rows are public; source exports stay local
+data/snapshots/business-licences/*.csv
+data/snapshots/injected_*/
+.review/
+state/
+site/

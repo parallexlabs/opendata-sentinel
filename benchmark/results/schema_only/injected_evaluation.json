@@ -1,0 +1,131 @@
+{
+  "precision": {
+    "point": 0.75,
+    "ci_low": 0.6,
+    "ci_high": 0.9,
+    "n": 10
+  },
+  "recall": {
+    "point": 0.4,
+    "ci_low": 0.2,
+    "ci_high": 0.6,
+    "n": 25
+  },
+  "per_dataset": {
+    "business-licences": {
+      "recall": {
+        "point": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 10
+      }
+    },
+    "voting-places-2017": {
+      "recall": {
+        "point": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n": 5
+      }
+    },
+    "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget": {
+      "recall": {
+        "point": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n": 5
+      }
+    },
+    "local-area-boundary": {
+      "recall": {
+        "point": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 5
+      }
+    }
+  },
+  "mean_run_precision": {
+    "point": 0.75,
+    "ci_low": 0.6,
+    "ci_high": 0.9,
+    "n": 10
+  },
+  "precision_estimand": "mean run precision, conditional on a defined precision",
+  "precision_runs": {
+    "defined": 10,
+    "excluded": 15,
+    "total": 25
+  },
+  "pooled_precision": {
+    "point": 0.6666666666666666,
+    "numerator": 10,
+    "denominator": 15,
+    "n": 15,
+    "ci_low": null,
+    "ci_high": null
+  },
+  "recall_estimand": "evidence-confirmed injected recall",
+  "pooled_recall": {
+    "point": 0.4,
+    "ci_low": 0.2,
+    "ci_high": 0.6,
+    "n": 25
+  },
+  "defects_total": 25,
+  "findings_total": 15,
+  "true_positive_findings": 10,
+  "false_positive_findings": 5,
+  "clean_snapshot": {
+    "findings_total": 4,
+    "synthetic_marker_hits": 0,
+    "synthetic_marker_match_fraction": {
+      "point": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "n": 4
+    },
+    "synthetic_marker_matching_reports": 0,
+    "interpretation": "synthetic marker check, not a municipal false-positive-rate estimate"
+  },
+  "details": {
+    "bootstrap": {
+      "base_seed": 42,
+      "injection_seed": 42,
+      "resamples": 2000,
+      "recall_seed": 42,
+      "mean_run_precision_seed": 43,
+      "per_dataset_recall_seed": 44
+    },
+    "defect_hits": 10,
+    "defect_misses": 15,
+    "background_findings_per_run_median": 4,
+    "run_precisions": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+}

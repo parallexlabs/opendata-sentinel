@@ -1,0 +1,5 @@
+dataset:
+  id: broken
+checks:
+  timeliness:
+    maximum_age_days: not-a-number

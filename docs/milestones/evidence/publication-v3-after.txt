@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- <checkout>/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: <checkout>
+configfile: pyproject.toml
+plugins: cov-7.1.0, platformdirs-4.12.1, anyio-4.15.1
+collecting ... collected 4 items
+
+tests/unit/test_publication_v3.py::test_f1_business_release_is_generated_without_source_records PASSED [ 25%]
+tests/unit/test_publication_v3.py::test_f2_documented_dev_install_supplies_wheel_backend PASSED [ 50%]
+tests/unit/test_publication_v3.py::test_f3_tags_use_valid_elements_and_local_operational_names PASSED [ 75%]
+tests/unit/test_publication_v3.py::test_f4_committed_examples_match_engine_and_renderers PASSED [100%]
+
+============================== 4 passed in 0.41s ===============================

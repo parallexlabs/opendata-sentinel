@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parallexlabs.example/schemas/opendata-sentinel/results-v1.json",
+  "title": "OpenData Sentinel results v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "source_uri",
+    "run_at",
+    "config_hash",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "dataset_id": { "type": "string" },
+    "source_uri": { "type": "string" },
+    "run_at": { "type": "string" },
+    "config_hash": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "required": ["error", "warning", "pass"],
+      "properties": {
+        "error": { "type": "integer", "minimum": 0 },
+        "warning": { "type": "integer", "minimum": 0 },
+        "pass": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "check_id",
+          "severity",
+          "message",
+          "affected_count",
+          "standards_tags"
+        ],
+        "properties": {
+          "check_id": { "type": "string" },
+          "severity": { "enum": ["error", "warning", "pass"] },
+          "message": { "type": "string" },
+          "affected_count": { "type": "integer", "minimum": 0 },
+          "standards_tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "field": { "type": ["string", "null"] },
+          "suggested_action": { "type": ["string", "null"] },
+          "evidence": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

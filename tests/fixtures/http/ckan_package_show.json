@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "result": {
+    "title": "CKAN fixture package",
+    "notes": "Test notes",
+    "license_title": "Open Government Licence",
+    "organization": {"title": "Test Org"},
+    "resources": [
+      {
+        "format": "CSV",
+        "url": "https://catalogue.example/resource.csv"
+      }
+    ]
+  }
+}

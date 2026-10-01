@@ -1,0 +1,7 @@
+dataset:
+  id: duplicates
+  primary_key: id
+
+checks:
+  uniqueness:
+    primary_key: id

@@ -1,0 +1,12 @@
+{
+  "total_count": 2,
+  "metas": {
+    "default": {
+      "title": "Test dataset",
+      "description": "Fixture",
+      "license": "CC0",
+      "modified": "2026-01-01T00:00:00+00:00",
+      "records_count": 2
+    }
+  }
+}

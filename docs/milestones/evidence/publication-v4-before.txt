@@ -1,0 +1,675 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: $CHECKOUT
+configfile: pyproject.toml
+plugins: cov-7.1.0, platformdirs-4.12.1, anyio-4.15.1
+collected 28 items
+
+tests/unit/test_publication_v4.py FFFFFFFFFFFFFFFF.....FFFFFFF           [100%]
+
+=================================== FAILURES ===================================
+_______________ test_f1_connector_claim_matches_implemented_api ________________
+
+    def test_f1_connector_claim_matches_implemented_api() -> None:
+        text = (ROOT / "README.md").read_text()
+        row = next(line for line in text.splitlines() if "opendata.vancouver.ca/explore/dataset/local-area-boundary/`" in line)
+>       assert "Socrata" not in row
+E       AssertionError: assert 'Socrata' not in '| Socrata /...boundary/` |'
+E         
+E         'Socrata' is contained here:
+E           | Socrata / OpenDataSoft | `https://opendata.vancouver.ca/explore/dataset/local-area-boundary/` |
+E         ?   +++++++
+
+tests/unit/test_publication_v4.py:39: AssertionError
+_ test_f2_every_live_path_rejects_redirects[counts-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'counts'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111c6fa10>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[counts-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'counts'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111795b10>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[relations-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'relations'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111c14dd0>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[relations-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'relations'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e1ac90>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[schema-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'schema'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e1a250>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[schema-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'schema'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x123293650>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-counts-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'snapshot-counts'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e01350>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-counts-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'snapshot-counts'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e18050>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-pages-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'snapshot-pages'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1235befd0>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-pages-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'snapshot-pages'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x111e46bd0>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-export-https://other.example/records] _
+
+target = 'https://other.example/records', stage = 'snapshot-export'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject10')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x123161a90>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_ test_f2_every_live_path_rejects_redirects[snapshot-export-http://127.0.0.1:8765/records] _
+
+target = 'http://127.0.0.1:8765/records', stage = 'snapshot-export'
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f2_every_live_path_reject11')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1236dd590>
+
+    @pytest.mark.parametrize("target", ["https://other.example/records", "http://127.0.0.1:8765/records"])
+    @pytest.mark.parametrize("stage", ["counts", "relations", "schema", "snapshot-counts",
+                                       "snapshot-pages", "snapshot-export"])
+    def test_f2_every_live_path_rejects_redirects(
+        target: str, stage: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        requests: list[httpx.Request] = []
+    
+        def respond(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            count = request.url.params.get("limit") == "0"
+            blocked_stage = stage in {"counts", "snapshot-counts"} or not count
+            if request.url.host == "opendata.vancouver.ca" and blocked_stage:
+                return httpx.Response(302, headers={"location": target})
+            return httpx.Response(200, json={"total_count": 20_000 if stage == "snapshot-export" else 1,
+                                           "results": []})
+    
+        original_client = httpx.Client
+        transport = httpx.MockTransport(respond)
+        monkeypatch.setattr(httpx, "HTTPTransport", lambda: transport)
+    
+        def client_factory(**kwargs):
+            kwargs.setdefault("transport", transport)
+            return original_client(**kwargs)
+    
+        monkeypatch.setattr(httpx, "Client", client_factory)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+>       with pytest.raises((httpx.HTTPError, ValueError)):
+E       Failed: DID NOT RAISE any of (HTTPError, ValueError)
+
+tests/unit/test_publication_v4.py:73: Failed
+_____________ test_f3_retry_after_is_finite_and_capped[1000000000] _____________
+
+raw = '1000000000'
+
+    @pytest.mark.parametrize("raw", ["1000000000", "inf", "nan", "-inf", "invalid", "-3", "0", "2.5"])
+    def test_f3_retry_after_is_finite_and_capped(raw: str) -> None:
+        client = http_client.RateLimitedClient(min_interval=0)
+        try:
+            delay = client._retry_after_seconds(httpx.Response(429, headers={"Retry-After": raw}), 100)
+>           assert math.isfinite(delay) and 0 <= delay <= 30
+E           assert (True and 1000000000.0 <= 30)
+E            +  where True = <built-in function isfinite>(1000000000.0)
+E            +    where <built-in function isfinite> = math.isfinite
+
+tests/unit/test_publication_v4.py:87: AssertionError
+________________ test_f3_retry_after_is_finite_and_capped[inf] _________________
+
+raw = 'inf'
+
+    @pytest.mark.parametrize("raw", ["1000000000", "inf", "nan", "-inf", "invalid", "-3", "0", "2.5"])
+    def test_f3_retry_after_is_finite_and_capped(raw: str) -> None:
+        client = http_client.RateLimitedClient(min_interval=0)
+        try:
+            delay = client._retry_after_seconds(httpx.Response(429, headers={"Retry-After": raw}), 100)
+>           assert math.isfinite(delay) and 0 <= delay <= 30
+E           assert (False)
+E            +  where False = <built-in function isfinite>(inf)
+E            +    where <built-in function isfinite> = math.isfinite
+
+tests/unit/test_publication_v4.py:87: AssertionError
+________________ test_f3_retry_after_is_finite_and_capped[nan] _________________
+
+raw = 'nan'
+
+    @pytest.mark.parametrize("raw", ["1000000000", "inf", "nan", "-inf", "invalid", "-3", "0", "2.5"])
+    def test_f3_retry_after_is_finite_and_capped(raw: str) -> None:
+        client = http_client.RateLimitedClient(min_interval=0)
+        try:
+            delay = client._retry_after_seconds(httpx.Response(429, headers={"Retry-After": raw}), 100)
+>           assert math.isfinite(delay) and 0 <= delay <= 30
+E           assert (False)
+E            +  where False = <built-in function isfinite>(nan)
+E            +    where <built-in function isfinite> = math.isfinite
+
+tests/unit/test_publication_v4.py:87: AssertionError
+_______________________ test_f3_total_retry_wait_budget ________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1237c5f50>
+
+    def test_f3_total_retry_wait_budget(monkeypatch: pytest.MonkeyPatch) -> None:
+        waits: list[float] = []
+        transport = httpx.MockTransport(lambda _: httpx.Response(429, headers={"Retry-After": "1000000000"}))
+        monkeypatch.setattr(http_client.time, "sleep", waits.append)
+        monkeypatch.setattr(url_policy, "resolve_host_ips", lambda _: [ipaddress.ip_address("93.184.216.34")])
+        with httpx.Client(transport=transport) as raw_client:
+            client = http_client.RateLimitedClient(client=raw_client, min_interval=0, max_retries=100)
+            assert client.get("https://example.test/data").status_code == 429
+>       assert waits and sum(waits) <= 60 and max(waits) <= 30
+E       assert ([1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, ...] and 100000000000.0 <= 60)
+E        +  where 100000000000.0 = sum([1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, 1000000000.0, ...])
+
+tests/unit/test_publication_v4.py:100: AssertionError
+_____________ test_f4_readme_test_temp_directory_from_fresh_layout _____________
+
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f4_readme_test_temp_direc0')
+
+    def test_f4_readme_test_temp_directory_from_fresh_layout(tmp_path: Path) -> None:
+        text = (ROOT / "README.md").read_text().split("## Development", 1)[1]
+        block = text.split("```bash", 1)[1].split("```", 1)[0]
+        lines = [line.strip() for line in block.splitlines()]
+        pytest_line = next(line for line in lines if line.startswith("pytest "))
+        options = shlex.split(pytest_line)
+        test = tmp_path / "test_fresh.py"
+        test.write_text("def test_fresh(tmp_path):\n    assert tmp_path.is_dir()\n")
+        assert not (tmp_path / "state").exists()
+        for line in lines[:lines.index(pytest_line)]:
+            if line.startswith("mkdir "):
+                subprocess.run(shlex.split(line), cwd=tmp_path, check=True)
+        args = [arg for arg in options if arg.startswith("--basetemp")]
+        result = subprocess.run([sys.executable, "-m", "pytest", "-q", *args, test.name], cwd=tmp_path,
+                                capture_output=True, text=True)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: E                                                                        [100%]
+E         ==================================== ERRORS ====================================
+E         _________________________ ERROR at setup of test_fresh _________________________
+E         
+E         self = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f4_readme_test_temp_direc0/state/test-tmp')
+E         mode = 448, parents = False, exist_ok = False
+E         
+E             def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+E                 """
+E                 Create a new directory at this given path.
+E                 """
+E                 try:
+E         >           os.mkdir(self, mode)
+E         E           FileNotFoundError: [Errno 2] No such file or directory: '$CHECKOUT/state/v4-before-tmp/test_f4_readme_test_temp_direc0/state/test-tmp'
+E         
+E         [home]/.pyenv/versions/3.11.15/lib/python3.11/pathlib.py:1116: FileNotFoundError
+E         =========================== short test summary info ============================
+E         ERROR test_fresh.py::test_fresh - FileNotFoundError: [Errno 2] No such file o...
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['$CHECKOUT/.venv/bin/python', '-m', 'pytest',...======================\nERROR test_fresh.py::test_fresh - FileNotFoundError: [Errno 2] No such file o...\n', stderr='').returncode
+
+tests/unit/test_publication_v4.py:118: AssertionError
+__________________ test_f5_actual_bootstrap_seeds_are_emitted __________________
+
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f5_actual_bootstrap_seeds0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1237c49d0>
+
+    def test_f5_actual_bootstrap_seeds_are_emitted(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        calls: list[tuple[int, int]] = []
+        original = injected._bootstrap_proportion
+    
+        def bootstrap(bits, *, n_resamples=2000, seed=42):
+            calls.append((seed, n_resamples))
+            return original(bits, n_resamples=n_resamples, seed=seed)
+    
+        monkeypatch.setattr(injected, "_bootstrap_proportion", bootstrap)
+        monkeypatch.setattr(injected, "apply_single_defect", lambda *a, **k: injected.InjectedGroundTruth(
+            "test", "test:0", "rule", "fixture", "duplicate_key"))
+        path = tmp_path / "defects.yml"
+        path.write_text("version: '1'\nseed: 42\ninstances_per_defect: 1\ndefects:\n"
+                        "  - defect_id: test\n    type: duplicate_key\n    dataset_id: fixture\n"
+                        "    expected_finding: rule\n    description: synthetic test\n")
+        report = injected.run_injected_evaluation(tmp_path, path, lambda _: [], seed=73).to_dict()
+        expected = {"base_seed": 73, "injection_seed": 73, "resamples": 2000,
+                    "recall_seed": 73, "mean_run_precision_seed": 74, "per_dataset_recall_seed": 75}
+>       assert report["details"]["bootstrap"] == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'bootstrap'
+
+tests/unit/test_publication_v4.py:139: KeyError
+_____________ test_f6_provisional_errors_do_not_become_actionable ______________
+
+    def test_f6_provisional_errors_do_not_become_actionable() -> None:
+        profile = SchemaProfileSpec(dataset_id="fixture", primary_key="facility_name", required_fields=["name"])
+        findings = run_schema_baseline_on_frame(profile, pd.DataFrame({"facility_name": ["Hall", "Hall"],
+                                                                     "name": [None, "Project"]}), "fixture://synthetic")
+        assert findings and any(f.severity == "error" for f in findings)
+>       assert all(f.to_dict()["actionable"] is None for f in findings)
+E       assert False
+E        +  where False = all(<generator object test_f6_provisional_errors_do_not_become_actionable.<locals>.<genexpr> at 0x1236f2f60>)
+
+tests/unit/test_publication_v4.py:150: AssertionError
+_______________ test_f7_public_ref_scan_rejects_unselected_refs ________________
+
+tmp_path = PosixPath('$CHECKOUT/state/v4-before-tmp/test_f7_public_ref_scan_reject0')
+
+    def test_f7_public_ref_scan_rejects_unselected_refs(tmp_path: Path) -> None:
+        module = public_import_module()
+        module.git("init", "-b", "publication-v4", cwd=tmp_path)
+        payload = (b"commit refs/heads/publication-v4\n"
+                   b"committer Example <example@example.com> 1 +0000\ndata 5\ntest\n\ndone\n")
+        module.git("fast-import", "--quiet", cwd=tmp_path, data=payload)
+        module.git("update-ref", "refs/tags/private-snapshot", "HEAD", cwd=tmp_path)
+>       with pytest.raises(SystemExit, match="Unexpected public refs"):
+E       Failed: DID NOT RAISE SystemExit
+
+tests/unit/test_publication_v4.py:160: Failed
+__________ test_regenerated_artifacts_have_no_automatic_actionability __________
+
+    def test_regenerated_artifacts_have_no_automatic_actionability() -> None:
+        for path in (ROOT / "benchmark/results").glob("*/findings.json"):
+>           assert all(f["actionable"] is None for f in json.loads(path.read_text())), path.name
+E           AssertionError: findings.json
+E           assert False
+E            +  where False = all(<generator object test_regenerated_artifacts_have_no_automatic_actionability.<locals>.<genexpr> at 0x114f335e0>)
+
+tests/unit/test_publication_v4.py:166: AssertionError
+___________ test_documentation_has_no_unresolved_sample_readme_links ___________
+
+    def test_documentation_has_no_unresolved_sample_readme_links() -> None:
+        for path in (ROOT / "docs").rglob("*.md"):
+>           assert not re.search(r"\]\([^)]*samples/README\)", path.read_text()), str(path.relative_to(ROOT))
+E           AssertionError: docs/DATA_LICENCES.md
+E           assert not <re.Match object; span=(1894, 1914), match='](../samples/README)'>
+E            +  where <re.Match object; span=(1894, 1914), match='](../samples/README)'> = <function search at 0x104a067a0>('\\]\\([^)]*samples/README\\)', '# Data licences and attribution\n\n## Company software\n\nSource code, documentation and synthetic fixtures in this r... in the benchmark and sample manifests. Contains information licensed under the Open Government Licence - Vancouver.\n')
+E            +    where <function search at 0x104a067a0> = re.search
+E            +    and   '# Data licences and attribution\n\n## Company software\n\nSource code, documentation and synthetic fixtures in this r... in the benchmark and sample manifests. Contains information licensed under the Open Government Licence - Vancouver.\n' = read_text()
+E            +      where read_text = PosixPath('$CHECKOUT/docs/DATA_LICENCES.md').read_text
+
+tests/unit/test_publication_v4.py:175: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_publication_v4.py::test_f1_connector_claim_matches_implemented_api
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[counts-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[counts-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[relations-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[relations-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[schema-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[schema-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-counts-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-counts-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-pages-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-pages-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-export-https://other.example/records]
+FAILED tests/unit/test_publication_v4.py::test_f2_every_live_path_rejects_redirects[snapshot-export-http://127.0.0.1:8765/records]
+FAILED tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[1000000000]
+FAILED tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[inf]
+FAILED tests/unit/test_publication_v4.py::test_f3_retry_after_is_finite_and_capped[nan]
+FAILED tests/unit/test_publication_v4.py::test_f3_total_retry_wait_budget - a...
+FAILED tests/unit/test_publication_v4.py::test_f4_readme_test_temp_directory_from_fresh_layout
+FAILED tests/unit/test_publication_v4.py::test_f5_actual_bootstrap_seeds_are_emitted
+FAILED tests/unit/test_publication_v4.py::test_f6_provisional_errors_do_not_become_actionable
+FAILED tests/unit/test_publication_v4.py::test_f7_public_ref_scan_rejects_unselected_refs
+FAILED tests/unit/test_publication_v4.py::test_regenerated_artifacts_have_no_automatic_actionability
+FAILED tests/unit/test_publication_v4.py::test_documentation_has_no_unresolved_sample_readme_links
+========================= 23 failed, 5 passed in 5.70s =========================

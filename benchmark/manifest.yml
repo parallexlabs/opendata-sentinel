@@ -1,0 +1,121 @@
+version: "1.0.0"
+
+portal:
+  name: City of Vancouver Open Data Portal
+  base_url: https://opendata.vancouver.ca
+  licence: Open Government Licence - Vancouver
+  licence_url: https://opendata.vancouver.ca/pages/licence/
+
+datasets:
+  - id: local-area-boundary
+    title: Local area boundary
+    licence: Open Government Licence - Vancouver
+    licence_url: https://opendata.vancouver.ca/pages/licence/
+    source_url: https://opendata.vancouver.ca/explore/dataset/local-area-boundary/
+    primary_key: name
+    expected_records: 22
+
+  - id: business-licences
+    title: Synthetic business-shaped demonstration (not City records)
+    licence: Apache-2.0
+    licence_url: https://www.apache.org/licenses/LICENSE-2.0
+    source_url: scripts/generate_business_fixture.py
+    primary_key: licencersn
+    expected_records: 200
+
+  - id: public-streets
+    title: Public streets
+    licence: Open Government Licence - Vancouver
+    licence_url: https://opendata.vancouver.ca/pages/licence/
+    source_url: https://opendata.vancouver.ca/explore/dataset/public-streets/
+    expected_records: 17072
+
+  - id: 2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    title: 2023 Multi-Year Capital Project Budget
+    licence: Open Government Licence - Vancouver
+    licence_url: https://opendata.vancouver.ca/pages/licence/
+    source_url: https://opendata.vancouver.ca/explore/dataset/2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget/
+    # Artificial benchmark assumption; publisher key semantics are unverified.
+    primary_key: project_program_name
+    expected_records: 777
+
+  - id: 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    title: 2024 Multi-Year Capital Project Budget
+    licence: Open Government Licence - Vancouver
+    licence_url: https://opendata.vancouver.ca/pages/licence/
+    source_url: https://opendata.vancouver.ca/explore/dataset/2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget/
+    # Artificial benchmark assumption; publisher key semantics are unverified.
+    primary_key: project_program_name
+    expected_records: 592
+
+  - id: voting-places-2017
+    title: Voting places 2017
+    licence: Open Government Licence - Vancouver
+    licence_url: https://opendata.vancouver.ca/pages/licence/
+    source_url: https://opendata.vancouver.ca/explore/dataset/voting-places-2017/
+    primary_key: voting_place_id
+    expected_records: 52
+
+relations:
+  - id: local_area_referential
+    type: referential
+    description: Synthetic business localarea values should match local area boundary names
+    left_dataset: business-licences
+    right_dataset: local-area-boundary
+    left_field: localarea
+    right_field: name
+    normalize: true
+    allowed_exceptions:
+      - Out of Town
+
+  - id: issued_requires_date
+    type: cross_field
+    description: Synthetic Issued rows require a date, except the synthetic excluded category
+    left_dataset: business-licences
+    when_field: status
+    when_value: Issued
+    then_required: issueddate
+    exclude_when:
+      businesstype: SYNTHETIC-EXCLUDED
+
+  - id: capital_budget_snapshot_drift
+    type: snapshot_drift
+    description: Prior approved budget should be stable across 2023 and 2024 snapshots for shared projects
+    left_dataset: 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    right_dataset: 2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    join_key: project_program_name
+    compare_field: multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans
+
+schema_profiles:
+  - dataset_id: local-area-boundary
+    required_fields:
+      - name
+    primary_key: name
+
+  - dataset_id: business-licences
+    required_fields:
+      - licencersn
+      - licencenumber
+      - status
+    primary_key: licencersn
+
+  - dataset_id: public-streets
+    required_fields:
+      - hblock
+
+  - dataset_id: voting-places-2017
+    required_fields:
+      - facility_name
+    # Artificial benchmark assumption for injection compatibility, not a publisher key.
+    # https://opendata.vancouver.ca/explore/dataset/voting-places-2017/ includes advance/general voting.
+    primary_key: facility_name
+
+  - dataset_id: 2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget
+    required_fields:
+      - project_program_name
+      - service_category_1
+    # Artificial benchmark assumption; publisher key semantics are unverified.
+    primary_key: project_program_name
+    ranges:
+      multi_year_capital_project_budgets_previously_approved_from_prior_capital_plans:
+        min: 0

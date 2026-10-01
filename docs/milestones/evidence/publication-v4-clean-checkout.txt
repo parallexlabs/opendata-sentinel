@@ -1,0 +1,262 @@
+
+COMMAND: ['git', 'clone', '--no-local', '$CHECKOUT/state/public-tree-v4-verified', '$CHECKOUT/state/clean-checkout-v4-verified']
+Cloning into '$CHECKOUT/state/clean-checkout-v4-verified'...
+
+COMMAND: ['$CHECKOUT/.venv/bin/python', '-m', 'venv', '$CHECKOUT/state/clean-checkout-v4-verified/.venv']
+
+COMMAND: ['$CHECKOUT/state/clean-checkout-v4-verified/.venv/bin/python', '-m', 'pip', 'install', '-c', 'requirements-tested.txt', '.[dev,benchmark]']
+Looking in links: $CHECKOUT/state/dependency-wheels
+Processing $CHECKOUT/state/clean-checkout-v4-verified
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing $CHECKOUT/state/dependency-wheels/geopandas-1.2.0-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/httpx-0.28.1-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/Jinja2-3.1.6-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/jsonschema-4.26.0-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pandas-3.0.6-cp311-cp311-macosx_11_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pydantic-2.13.5-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pyogrio-0.13.0-cp311-abi3-macosx_12_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pyproj-3.7.2-cp311-cp311-macosx_14_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/PyYAML-6.0.3-cp311-cp311-macosx_11_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/shapely-2.1.2-cp311-cp311-macosx_11_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/typer-0.27.2-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/frictionless-5.19.1-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pyarrow-25.0.1-cp311-cp311-macosx_12_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/beautifulsoup4-4.15.0-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/hatchling-1.32.4-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocs_material-9.7.7-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocs-1.6.1-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocstrings-1.0.6-py3-none-any.whl (from mkdocstrings[python]>=0.24; extra == "dev"->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mypy-2.3.1-cp311-cp311-macosx_11_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pandas_stubs-3.0.5.260914-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pyright-1.1.414-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pytest_cov-7.1.0-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pytest-9.1.1-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/ruff-0.16.9-py3-none-macosx_11_0_arm64.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/types_jsonschema-4.26.0.20260518-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/types_PyYAML-6.0.12.20260906-py3-none-any.whl (from opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/soupsieve-2.10-py3-none-any.whl (from beautifulsoup4>=4.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/typing_extensions-4.16.0-py3-none-any.whl (from beautifulsoup4>=4.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/attrs-26.1.0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/chardet-7.6.0-cp311-cp311-macosx_11_0_arm64.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/humanize-4.16.0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/isodate-0.7.2-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/marko-2.2.4-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/petl-1.7.28-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/python_dateutil-2.9.0.post0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/python_slugify-9.1.2-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/requests-2.34.2-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/rfc3986-2.0.0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/simpleeval-1.0.8-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/tabulate-0.10.0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/validators-0.35.0-py3-none-any.whl (from frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/numpy-2.4.6-cp311-cp311-macosx_14_0_arm64.whl (from geopandas>=0.14->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/packaging-26.3-py3-none-any.whl (from geopandas>=0.14->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pathspec-1.1.1-py3-none-any.whl (from hatchling>=1.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pluggy-1.6.0-py3-none-any.whl (from hatchling>=1.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/tomlkit-0.15.1-py3-none-any.whl (from hatchling>=1.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/trove_classifiers-2026.9.21.13-py3-none-any.whl (from hatchling>=1.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/anyio-4.15.1-py3-none-any.whl (from httpx>=0.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/certifi-2026.7.22-py3-none-any.whl (from httpx>=0.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/httpcore-1.0.9-py3-none-any.whl (from httpx>=0.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/idna-3.20-py3-none-any.whl (from httpx>=0.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/h11-0.16.0-py3-none-any.whl (from httpcore==1.*->httpx>=0.27->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/MarkupSafe-3.0.3-cp311-cp311-macosx_11_0_arm64.whl (from jinja2>=3.1->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl (from jsonschema>=4.21->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/referencing-0.37.0-py3-none-any.whl (from jsonschema>=4.21->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/rpds_py-2026.6.3-cp311-cp311-macosx_11_0_arm64.whl (from jsonschema>=4.21->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/click-8.5.0-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/ghp_import-2.1.0-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/Markdown-3.11-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mergedeep-1.3.4-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocs_get_deps-0.2.2-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pyyaml_env_tag-1.1-py3-none-any.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/watchdog-6.0.0-cp311-cp311-macosx_11_0_arm64.whl (from mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/babel-2.18.0-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/backrefs-8.0-py311-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/colorama-0.4.6-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocs_material_extensions-1.3.1-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/paginate-0.5.7-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/Pygments-2.21.0-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pymdown_extensions-12.1-py3-none-any.whl (from mkdocs-material>=9.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocs_autorefs-1.4.4-py3-none-any.whl (from mkdocstrings>=0.24->mkdocstrings[python]>=0.24; extra == "dev"->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mkdocstrings_python-2.0.9-py3-none-any.whl (from mkdocstrings[python]>=0.24; extra == "dev"->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mypy_extensions-1.1.0-py3-none-any.whl (from mypy>=1.8->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/librt-0.15.0-cp311-cp311-macosx_11_0_arm64.whl (from mypy>=1.8->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/ast_serialize-0.11.2-cp39-abi3-macosx_11_0_arm64.whl (from mypy>=1.8->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/annotated_types-0.8.0-py3-none-any.whl (from pydantic>=2.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/pydantic_core-2.46.5-cp311-cp311-macosx_11_0_arm64.whl (from pydantic>=2.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/typing_inspection-0.4.4-py3-none-any.whl (from pydantic>=2.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/nodeenv-1.11.0-py3-none-any.whl (from pyright>=1.1->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/iniconfig-2.3.0-py3-none-any.whl (from pytest>=8.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/coverage-7.16.2-cp311-cp311-macosx_11_0_arm64.whl (from coverage[toml]>=7.10.6->pytest-cov>=4.1->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/shellingham-1.5.4-py3-none-any.whl (from typer>=0.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/rich-15.0.0-py3-none-any.whl (from typer>=0.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/annotated_doc-0.0.5-py3-none-any.whl (from typer>=0.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/platformdirs-4.12.1-py3-none-any.whl (from mkdocs-get-deps>=0.2.0->mkdocs>=1.5->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/griffelib-2.3.0-py3-none-any.whl (from mkdocstrings-python>=1.16.2->mkdocstrings[python]>=0.24; extra == "dev"->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/six-1.17.0-py3-none-any.whl (from python-dateutil>=2.8->frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/text_unidecode-1.3-py3-none-any.whl (from python-slugify>=1.2->frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/charset_normalizer-3.5.1-cp311-cp311-macosx_10_9_universal2.whl (from requests>=2.10->frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/urllib3-2.8.0-py3-none-any.whl (from requests>=2.10->frictionless>=5.0->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/markdown_it_py-4.2.0-py3-none-any.whl (from rich>=13.8.0->typer>=0.12->opendata-sentinel==0.4.0)
+Processing $CHECKOUT/state/dependency-wheels/mdurl-0.1.2-py3-none-any.whl (from markdown-it-py>=2.2.0->rich>=13.8.0->typer>=0.12->opendata-sentinel==0.4.0)
+Building wheels for collected packages: opendata-sentinel
+  Building wheel for opendata-sentinel (pyproject.toml): started
+  Building wheel for opendata-sentinel (pyproject.toml): finished with status 'done'
+  Created wheel for opendata-sentinel: filename=opendata_sentinel-0.4.0-py3-none-any.whl size=71056 sha256=e02272fe49e3d4cb5098f4584c97102c9a33a2ab5f9c76650aa16f95b9de4bf7
+  Stored in directory: $CHECKOUT/state/pip-cache-v4/wheels/6e/df/e4/4f35a0758293beea86f66333fdef5b9c233476162f1948a7cc
+Successfully built opendata-sentinel
+Installing collected packages: trove-classifiers, text-unidecode, paginate, watchdog, validators, urllib3, typing-extensions, types-pyyaml, tomlkit, tabulate, soupsieve, six, simpleeval, shellingham, ruff, rpds-py, rfc3986, pyyaml, python-slugify, pygments, pyarrow, pluggy, platformdirs, petl, pathspec, packaging, numpy, nodeenv, mypy_extensions, mkdocs-material-extensions, mergedeep, mdurl, MarkupSafe, marko, markdown, librt, isodate, iniconfig, idna, humanize, h11, griffelib, coverage, colorama, click, charset_normalizer, chardet, certifi, backrefs, babel, attrs, ast-serialize, annotated-types, annotated-doc, typing-inspection, shapely, requests, referencing, pyyaml-env-tag, python-dateutil, pytest, pyright, pyproj, pyogrio, pymdown-extensions, pydantic-core, pandas-stubs, mypy, mkdocs-get-deps, markdown-it-py, jinja2, httpcore, hatchling, beautifulsoup4, anyio, types-jsonschema, rich, pytest-cov, pydantic, pandas, jsonschema-specifications, httpx, ghp-import, typer, mkdocs, jsonschema, geopandas, opendata-sentinel, mkdocs-material, mkdocs-autorefs, frictionless, mkdocstrings, mkdocstrings-python
+Successfully installed MarkupSafe-3.0.3 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 ast-serialize-0.11.2 attrs-26.1.0 babel-2.18.0 backrefs-8.0 beautifulsoup4-4.15.0 certifi-2026.7.22 chardet-7.6.0 charset_normalizer-3.5.1 click-8.5.0 colorama-0.4.6 coverage-7.16.2 frictionless-5.19.1 geopandas-1.2.0 ghp-import-2.1.0 griffelib-2.3.0 h11-0.16.0 hatchling-1.32.4 httpcore-1.0.9 httpx-0.28.1 humanize-4.16.0 idna-3.20 iniconfig-2.3.0 isodate-0.7.2 jinja2-3.1.6 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 librt-0.15.0 markdown-3.11 markdown-it-py-4.2.0 marko-2.2.4 mdurl-0.1.2 mergedeep-1.3.4 mkdocs-1.6.1 mkdocs-autorefs-1.4.4 mkdocs-get-deps-0.2.2 mkdocs-material-9.7.7 mkdocs-material-extensions-1.3.1 mkdocstrings-1.0.6 mkdocstrings-python-2.0.9 mypy-2.3.1 mypy_extensions-1.1.0 nodeenv-1.11.0 numpy-2.4.6 opendata-sentinel-0.4.0 packaging-26.3 paginate-0.5.7 pandas-3.0.6 pandas-stubs-3.0.5.260914 pathspec-1.1.1 petl-1.7.28 platformdirs-4.12.1 pluggy-1.6.0 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 pygments-2.21.0 pymdown-extensions-12.1 pyogrio-0.13.0 pyproj-3.7.2 pyright-1.1.414 pytest-9.1.1 pytest-cov-7.1.0 python-dateutil-2.9.0.post0 python-slugify-9.1.2 pyyaml-6.0.3 pyyaml-env-tag-1.1 referencing-0.37.0 requests-2.34.2 rfc3986-2.0.0 rich-15.0.0 rpds-py-2026.6.3 ruff-0.16.9 shapely-2.1.2 shellingham-1.5.4 simpleeval-1.0.8 six-1.17.0 soupsieve-2.10 tabulate-0.10.0 text-unidecode-1.3 tomlkit-0.15.1 trove-classifiers-2026.9.21.13 typer-0.27.2 types-jsonschema-4.26.0.20260518 types-pyyaml-6.0.12.20260906 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 validators-0.35.0 watchdog-6.0.0
+
+COMMAND: ['bash', '-eu', '-c', '\nmkdir -p state\nruff check src tests scripts\nmypy src\npyright src\npytest --cov=civic_data_qa --cov-fail-under=90 -m "not network" --basetemp=state/test-tmp\nmkdocs build --strict\n']
+All checks passed!
+Success: no issues found in 46 source files
+0 errors, 0 warnings, 0 informations
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+........................................................................ [ 95%]
+..........                                                               [100%]
+=============================== warnings summary ===============================
+tests/unit/test_v02_regressions.py::test_timeliness_missing_and_unparsable_dates_reported
+  $CHECKOUT/state/clean-checkout-v4-verified/.venv/lib/python3.11/site-packages/civic_data_qa/checks/timeliness.py:83: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+    dates = pd.to_datetime(series, errors="coerce", utc=True)
+
+tests/unit/test_v02_regressions.py::test_empty_geometry_counts_as_invalid
+  $CHECKOUT/state/clean-checkout-v4-verified/.venv/lib/python3.11/site-packages/civic_data_qa/checks/geometry.py:38: UserWarning: GeoSeries.notna() previously returned False for both missing (None) and empty geometries. Now, it only returns False for missing values. Since the calling GeoSeries contains empty geometries, the result has changed compared to previous versions of GeoPandas.
+  Given a GeoSeries 's', you can use '~s.is_empty & s.notna()' to get back the old behaviour.
+  
+  To further ignore this warning, you can do: 
+  import warnings; warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
+    present = geoms.notna() & geoms.apply(lambda g: g is not None)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.11.15-final-0 _______________
+
+Name                                                                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------------------------------------------------
+.venv/lib/python3.11/site-packages/civic_data_qa/__init__.py                        4      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/__init__.py              4      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/confidence.py           22      3    86%   28, 31, 45
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/evaluate.py             99      5    95%   71, 108-109, 111-112
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/ingest.py              119     16    87%   32, 50, 55, 59, 97, 101, 123, 141-152, 188-190, 203
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/injected.py            444     34    92%   203, 220, 224, 229, 268, 279, 287, 381, 386, 398, 401-409, 412, 417, 421, 428, 432, 437, 502, 697-705, 716
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/manifest.py             22      2    91%   15, 24
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/memory_probe.py         52      5    90%   30-32, 40, 80
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/models.py               84      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/relations.py           206     28    86%   36, 50, 64, 77, 145, 176, 191, 198, 240, 244, 248, 252-253, 265, 293, 317-325, 380, 392, 406, 416, 462
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/runner.py              166      8    95%   39, 55, 75, 104, 251, 286, 334-341
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/schema_baseline.py     149     20    87%   115-116, 141-142, 184-188, 194-198, 209-210, 220, 257-258, 262, 264, 276
+.venv/lib/python3.11/site-packages/civic_data_qa/benchmark/snapshots.py           172     12    93%   83-84, 149, 214-215, 224-227, 231, 239, 243
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/__init__.py                 0      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/base.py                     5      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/completeness.py            28      3    89%   18-28, 60
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/consistency.py             27      6    78%   20, 22, 25-36, 51
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/crs.py                     36      4    89%   24, 60, 73, 84
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/domains.py                 17      1    94%   17
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/geometry.py                54     10    81%   22-24, 37, 67, 70, 74, 79, 82, 89
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/metadata.py                14      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/privacy.py                 30      2    93%   22, 30
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/timeliness.py              53      7    87%   17, 27, 30, 52, 69, 71, 125
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/uniqueness.py              27      2    93%   16, 18
+.venv/lib/python3.11/site-packages/civic_data_qa/checks/validity.py                68      8    88%   24-25, 38, 41, 46, 76, 121, 129
+.venv/lib/python3.11/site-packages/civic_data_qa/cli/__init__.py                    0      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/cli/main.py                      160     24    85%   64, 70, 74, 115, 120, 145, 169-171, 181-186, 222-224, 260-261, 264, 287, 289-290, 298
+.venv/lib/python3.11/site-packages/civic_data_qa/config.py                         97      3    97%   134-135, 137
+.venv/lib/python3.11/site-packages/civic_data_qa/engine.py                         62      1    98%   39
+.venv/lib/python3.11/site-packages/civic_data_qa/models.py                         61      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/plugins.py                        16      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/plugins_ext/__init__.py            0      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/plugins_ext/demo_check.py         14      2    86%   16, 28
+.venv/lib/python3.11/site-packages/civic_data_qa/reporters/__init__.py              4      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/reporters/backlog.py              22      1    95%   52
+.venv/lib/python3.11/site-packages/civic_data_qa/reporters/html.py                 10      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/reporters/json_report.py           9      1    89%   17
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/__init__.py                2      0   100%
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/arcgis.py                 68      8    88%   28, 31, 37, 64, 78, 80, 84, 115
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/ckan.py                   48      5    90%   20, 44, 48, 53, 79
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/files.py                  40      7    82%   34-39, 45
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/http_client.py           116      6    95%   44, 52, 137, 151-153
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/loader.py                 35      1    97%   32
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/socrata.py                69      7    90%   27, 69, 75, 78-79, 82, 110
+.venv/lib/python3.11/site-packages/civic_data_qa/sources/url_policy.py             46      4    91%   34, 48, 61, 65
+.venv/lib/python3.11/site-packages/civic_data_qa/standards.py                       5      0   100%
+-------------------------------------------------------------------------------------------------------------
+TOTAL                                                                            2786    246    91%
+Required test coverage of 90% reached. Total coverage: 91.17%
+226 passed, 1 deselected, 2 warnings in 6.47s
+
+[31m │  ⚠  Warning from the Material for MkDocs team[0m
+[31m │[0m
+[31m │[0m  MkDocs 2.0, the underlying framework of Material for MkDocs,
+[31m │[0m  will introduce backward-incompatible changes, including:
+[31m │[0m
+[31m │  × [0mAll plugins will stop working – the plugin system has been removed
+[31m │  × [0mAll theme overrides will break – the theming system has been rewritten
+[31m │  × [0mNo migration path exists – existing projects cannot be upgraded
+[31m │  × [0mClosed contribution model – community members can't report bugs
+[31m │  × [0mCurrently unlicensed – unsuitable for production use
+[31m │[0m
+[31m │[0m  Our full analysis:
+[31m │[0m
+[31m │[0m  [4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/[0m
+[0m
+INFO    -  Cleaning site directory
+INFO    -  Building documentation to directory: $CHECKOUT/state/clean-checkout-v4-verified/site
+INFO    -  The following pages exist in the docs directory, but are not included in the "nav" configuration:
+  - AUDIT_HISTORY.md
+  - PREREGISTRATION.md
+  - PREREGISTRATION_AMENDMENT_2026-09-30.md
+  - generated-business.md
+  - milestones/M0_REPORT.md
+  - milestones/M1_REPORT.md
+  - milestones/M2_REPORT.md
+  - milestones/M3_REPORT.md
+  - milestones/PHASE2_REPORT.md
+  - milestones/PHASE3_REPORT.md
+  - milestones/PHASE4_REPORT.md
+  - milestones/PUBLICATION_FIX_REPORT_2026-10-01.md
+  - milestones/PUBLICATION_FIX_REPORT_V2_2026-10-01.md
+  - milestones/PUBLICATION_FIX_REPORT_V3_2026-10-01.md
+  - milestones/PUBLICATION_FIX_REPORT_V4_2026-10-01.md
+INFO    -  Documentation built in 0.53 seconds
+
+COMMAND: ['$CHECKOUT/state/clean-checkout-v4-verified/.venv/bin/python', '-m', 'pip', 'check']
+No broken requirements found.
+
+COMMAND: ['$CHECKOUT/state/clean-checkout-v4-verified/.venv/bin/python', '-m', 'coverage', 'json', '-o', 'state/coverage.json']
+Wrote JSON report to state/coverage.json
+
+COMMAND: ['bash', 'scripts/regenerate_all.sh']
+Generated 200 synthetic business rows; no business source data read
+Wrote benchmark/results/comparison.json (three evaluation modes)
+Wrote RESULTS.md and docs/results.md
+Wrote $CHECKOUT/state/clean-checkout-v4-verified/benchmark/results/figures/injected_precision.svg
+Wrote $CHECKOUT/state/clean-checkout-v4-verified/benchmark/results/figures/injected_recall.svg
+demo: {'error': 0, 'warning': 0, 'pass': 9}
+local-area: {'error': 0, 'warning': 0, 'pass': 6}
+business-licences: {'error': 1, 'warning': 0, 'pass': 3}
+Regeneration exit 0; elapsed 47.697 seconds
+
+COMMAND: ['$CHECKOUT/state/clean-checkout-v4-verified/.venv/bin/python', 'scripts/wheel_smoke.py']
+{
+  "version": "0.4.0",
+  "reports": 7,
+  "isolated_import": true,
+  "development_dependencies_absent": true,
+  "parquet_read": "passed",
+  "frictionless": "passed",
+  "template_render": "passed",
+  "missing_checkout_error": "passed",
+  "work_directory": "state/wheel-smoke-wbnhyuxd",
+  "dependency_source": "local wheelhouse"
+}
+
+COMMAND: ['$CHECKOUT/state/clean-checkout-v4-verified/.venv/bin/python', 'scripts/prepare_public_import.py', '--scan-public-refs']
+Public ref scan passed: 1 commits

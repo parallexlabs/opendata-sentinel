@@ -1,0 +1,53 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+____________ test_f1_public_import_is_separate_and_full_history_ci _____________
+tests/unit/test_publication_v2.py:21: in test_f1_public_import_is_separate_and_full_history_ci
+    assert script.exists(), "Missing reviewed-tree public import exporter"
+E   AssertionError: Missing reviewed-tree public import exporter
+E   assert False
+E    +  where False = exists()
+E    +    where exists = PosixPath('<checkout>/scripts/prepare_public_import.py').exists
+_____________ test_f2_macro_precision_is_not_serialized_as_pooled ______________
+tests/unit/test_publication_v2.py:40: in test_f2_macro_precision_is_not_serialized_as_pooled
+    assert report["pooled_precision"]["point"] == 0.5
+E   assert 0.75 == 0.5
+______ test_f3_provisional_true_positive_does_not_establish_actionability ______
+tests/unit/test_publication_v2.py:50: in test_f3_provisional_true_positive_does_not_establish_actionability
+    assert result["actionable_yield"]["point"] is None
+E   assert 1.0 is None
+_______ test_f4_comparison_declares_ordered_prefix_and_unequal_coverage ________
+tests/unit/test_publication_v2.py:59: in test_f4_comparison_declares_ordered_prefix_and_unequal_coverage
+    assert "sampled internal-plus-Frictionless schema ablation" in docs
+E   AssertionError: assert 'sampled internal-plus-Frictionless schema ablation' in '# Cross-dataset consistency benchmark\n\nOpenData Sentinel includes a versioned benchmark of cross-dataset contradict...md`](ADJUDICATION_SHEET.md).\n\n## Results\n\nSee [results](results.md) and [technical report](technical-report.md).\n'
+___________ test_f5_historical_reports_and_environment_are_traceable ___________
+tests/unit/test_publication_v2.py:70: in test_f5_historical_reports_and_environment_are_traceable
+    assert "SUPERSEDED" in text[:1300], name
+E   AssertionError: M1_REPORT
+E   assert 'SUPERSEDED' in '# M1 report: preregistration\n\n**Project:** F1, OpenData Sentinel cross-dataset municipal consistency benchmark  \n*... dataset with normal-approximation interval |\n\n**Stop rules:**\n\n- Stop M3 if fewer than 3 adjudicated held-out lab'
+___________ test_f6_prior_art_capabilities_and_bounded_contribution ____________
+tests/unit/test_publication_v2.py:82: in test_f6_prior_art_capabilities_and_bounded_contribution
+    assert "prior art does not combine" not in text
+E   AssertionError: assert 'prior art does not combine' not in '# M0 report...mentation.\n'
+E     
+E     'prior art does not combine' is contained here:
+E       ign keys; prior art does not combine this benchmark design with municipal snapshot drift, injected-defect ground truth, and portal-scale evaluation.
+E     ?           ++++++++++++++++++++++++++
+E       
+E       ## Data verification
+E       ...
+E     
+E     ...Full output truncated (34 lines hidden), use '-vv' to show
+__________ test_f7_installation_declares_benchmark_extra_and_checkout __________
+tests/unit/test_publication_v2.py:91: in test_f7_installation_declares_benchmark_extra_and_checkout
+    assert any(dep.startswith("pyarrow") for dep in extra)
+E   assert False
+E    +  where False = any(<generator object test_f7_installation_declares_benchmark_extra_and_checkout.<locals>.<genexpr> at 0x11f31e6c0>)
+=========================== short test summary info ============================
+FAILED tests/unit/test_publication_v2.py::test_f1_public_import_is_separate_and_full_history_ci
+FAILED tests/unit/test_publication_v2.py::test_f2_macro_precision_is_not_serialized_as_pooled
+FAILED tests/unit/test_publication_v2.py::test_f3_provisional_true_positive_does_not_establish_actionability
+FAILED tests/unit/test_publication_v2.py::test_f4_comparison_declares_ordered_prefix_and_unequal_coverage
+FAILED tests/unit/test_publication_v2.py::test_f5_historical_reports_and_environment_are_traceable
+FAILED tests/unit/test_publication_v2.py::test_f6_prior_art_capabilities_and_bounded_contribution
+FAILED tests/unit/test_publication_v2.py::test_f7_installation_declares_benchmark_extra_and_checkout
+7 failed, 1 deselected in 0.34s

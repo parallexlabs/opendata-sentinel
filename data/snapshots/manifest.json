@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "entries": [
+    {
+      "dataset_id": "local-area-boundary",
+      "url": "https://opendata.vancouver.ca/explore/dataset/local-area-boundary/",
+      "retrieved_at": "2026-10-01T00:01:56.839086+00:00",
+      "sha256": "f89b2656d7a9103b12fcdfbbd994123a2161e66e23a6a37988ed720e1ef600c0",
+      "record_count": 22,
+      "chunk_files": [
+        "local-area-boundary_0000.parquet"
+      ]
+    },
+    {
+      "dataset_id": "business-licences",
+      "url": "scripts/generate_business_fixture.py",
+      "retrieved_at": "2000-01-01T00:00:00+00:00",
+      "sha256": "12047e61cc07cc7a79e1c044babb8ff690f70c8971414a0644b8d400672331b5",
+      "record_count": 200,
+      "chunk_files": [
+        "business-licences_0000.parquet"
+      ],
+      "fields": [
+        "licencersn",
+        "licencenumber",
+        "status",
+        "issueddate",
+        "expireddate",
+        "localarea",
+        "businesstype",
+        "businesssubtype",
+        "folderyear",
+        "licencerevisionnumber"
+      ]
+    },
+    {
+      "dataset_id": "public-streets",
+      "url": "https://opendata.vancouver.ca/explore/dataset/public-streets/",
+      "retrieved_at": "2026-10-01T00:01:56.839086+00:00",
+      "sha256": "bc170e0d42a081a0bc6899b7cadeb532ae60607248ddcd591c54fd59c3de3a34",
+      "record_count": 17072,
+      "chunk_files": [
+        "public-streets_0000.parquet",
+        "public-streets_0001.parquet"
+      ]
+    },
+    {
+      "dataset_id": "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+      "url": "https://opendata.vancouver.ca/explore/dataset/2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget/",
+      "retrieved_at": "2026-10-01T00:01:56.839086+00:00",
+      "sha256": "c0a474027d042fd57429c4443ea1f676ea0d21edee84c72bc35cd3d966fb80c6",
+      "record_count": 777,
+      "chunk_files": [
+        "2023-multi-year-capital-project-budget-requests-and-capital-expenditure-budget_0000.parquet"
+      ]
+    },
+    {
+      "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+      "url": "https://opendata.vancouver.ca/explore/dataset/2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget/",
+      "retrieved_at": "2026-10-01T00:01:56.839086+00:00",
+      "sha256": "d0b499f1add4ac7299557a219e5eb5be0f4f696c92f9e73ef6f30535c8843701",
+      "record_count": 592,
+      "chunk_files": [
+        "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget_0000.parquet"
+      ]
+    },
+    {
+      "dataset_id": "voting-places-2017",
+      "url": "https://opendata.vancouver.ca/explore/dataset/voting-places-2017/",
+      "retrieved_at": "2026-10-01T00:01:56.839086+00:00",
+      "sha256": "99e4070c3886f1c59d449f389aa63f1eb2863b820d4fecee970846a26a4f7b71",
+      "record_count": 52,
+      "chunk_files": [
+        "voting-places-2017_0000.parquet"
+      ]
+    }
+  ]
+}

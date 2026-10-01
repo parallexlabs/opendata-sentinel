@@ -1,0 +1,75 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: <checkout>
+configfile: pyproject.toml
+plugins: cov-7.1.0, platformdirs-4.12.1, anyio-4.15.1
+collected 4 items
+
+tests/unit/test_publication_v3.py FFFF                                   [100%]
+
+=================================== FAILURES ===================================
+_________ test_f1_business_release_is_generated_without_source_records _________
+
+    def test_f1_business_release_is_generated_without_source_records() -> None:
+>       generator = script_module("generate_business_fixture")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_publication_v3.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'generate_business_fixture'
+
+    def script_module(name: str):
+        path = ROOT / "scripts" / f"{name}.py"
+>       assert path.exists(), f"Missing deterministic generator: {path.name}"
+E       AssertionError: Missing deterministic generator: generate_business_fixture.py
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('<checkout>/scripts/generate_business_fixture.py').exists
+
+tests/unit/test_publication_v3.py:22: AssertionError
+____________ test_f2_documented_dev_install_supplies_wheel_backend _____________
+
+    def test_f2_documented_dev_install_supplies_wheel_backend() -> None:
+        config = tomllib.loads((ROOT / "pyproject.toml").read_text())
+>       assert "hatchling>=1.27" in config["project"]["optional-dependencies"]["dev"]
+E       AssertionError: assert 'hatchling>=1.27' in ['beautifulsoup4>=4.12', 'mypy>=1.8', 'mkdocs>=1.5', 'mkdocs-material>=9.5', 'mkdocstrings[python]>=0.25', 'pandas-stubs>=2.1', ...]
+
+tests/unit/test_publication_v3.py:51: AssertionError
+_________ test_f3_tags_use_valid_elements_and_local_operational_names __________
+
+    def test_f3_tags_use_valid_elements_and_local_operational_names() -> None:
+>       assert tags_for("completeness.required_fields") == ["ISO19157-2:2016:DQ_CompletenessOmission"]
+E       AssertionError: assert ['ISO19157:DQ...n (indirect)'] == ['ISO19157-2:...nessOmission']
+E         
+E         At index 0 diff: 'ISO19157:DQ_Completeness.commission' != 'ISO19157-2:2016:DQ_CompletenessOmission'
+E         Left contains 2 more items, first extra item: 'DAMA-DMBOK:Completeness'
+E         Use -v to get more diff
+
+tests/unit/test_publication_v3.py:56: AssertionError
+____________ test_f4_committed_examples_match_engine_and_renderers _____________
+
+tmp_path = PosixPath('<checkout>/state/v3-test-tmp/test_f4_committed_examples_mat0')
+
+    def test_f4_committed_examples_match_engine_and_renderers(tmp_path: Path) -> None:
+        for stem, config, source in (
+            ("demo", "demo.csv.yml", "samples/demo.csv"),
+            ("local-area", "local-area-boundary.yml", "samples/local-area-boundary.geojson"),
+            ("business-licences", "business-licences.yml", "samples/business-licences.csv"),
+        ):
+            fresh = run_checks(load_file(ROOT / source), load_ruleset(ROOT / "examples" / config)).to_dict()
+            committed = json.loads((ROOT / "examples" / f"{stem}-results.json").read_text())
+>           assert committed["findings"] == fresh["findings"], stem
+E           AssertionError: demo
+E           assert [{'affected_c...t', ...}, ...] == [{'check_id':... 0, ...}, ...]
+E             
+E             At index 0 diff: {'affected_count': 0, 'check_id': 'completeness.required_fields', 'evidence': {}, 'field': 'id', 'message': "Required field 'id' is fully populated", 'severity': 'pass', 'standards_tags': ['ISO19157:completeness', 'DAMA:completeness', 'DCAT:completeness'], 'suggested_action': None} != {'check_id': 'completeness.required_fields', 'severity': 'pass', 'message': "Required field 'id' is fully populated", 'affected_count': 0, 'standards_tags': ['ISO19157:DQ_Completeness.commission', 'DAMA-DMBOK:Completeness', 'dct:description (indirect)'], 'field': 'id', 'suggested_action': None, 'evidence': {}}
+E             Use -v to get more diff
+
+tests/unit/test_publication_v3.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_publication_v3.py::test_f1_business_release_is_generated_without_source_records
+FAILED tests/unit/test_publication_v3.py::test_f2_documented_dev_install_supplies_wheel_backend
+FAILED tests/unit/test_publication_v3.py::test_f3_tags_use_valid_elements_and_local_operational_names
+FAILED tests/unit/test_publication_v3.py::test_f4_committed_examples_match_engine_and_renderers
+============================== 4 failed in 0.54s ===============================

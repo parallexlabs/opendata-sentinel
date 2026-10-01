@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data quality report - {{ results.dataset_id }}</title>
+  <style>
+    :root { color-scheme: light; --text: #1a1a1a; --bg: #ffffff; --border: #4a4a4a; --error: #8b0000; --warning: #8b6914; --pass: #1b5e20; }
+    body { font-family: system-ui, sans-serif; line-height: 1.5; color: var(--text); background: var(--bg); margin: 2rem; max-width: 960px; }
+    h1, h2 { line-height: 1.2; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    .status-error { color: var(--error); font-weight: bold; }
+    .status-warning { color: var(--warning); font-weight: bold; }
+    .status-pass { color: var(--pass); font-weight: bold; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    a:focus, button:focus { outline: 3px solid #005fcc; outline-offset: 2px; }
+    footer { margin-top: 2rem; font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+  </style>
+</head>
+<body>
+  <a class="visually-hidden" href="#main-content">Skip to main content</a>
+  <header>
+    <h1>Data quality report: {{ results.dataset_id }}</h1>
+    <p><strong>Source:</strong> {{ results.source_uri }}</p>
+    <p><strong>Run timestamp:</strong> <time datetime="{{ results.run_at }}">{{ results.run_at }}</time></p>
+  </header>
+
+  <main id="main-content">
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Summary</h2>
+      <ul>
+        <li><span class="status-error">error</span>: {{ results.summary.error }}</li>
+        <li><span class="status-warning">warning</span>: {{ results.summary.warning }}</li>
+        <li><span class="status-pass">pass</span>: {{ results.summary.pass }}</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="findings-heading">
+      <h2 id="findings-heading">Findings</h2>
+      <table>
+        <caption class="visually-hidden">Quality check findings</caption>
+        <thead>
+          <tr>
+            <th scope="col">Check</th>
+            <th scope="col">Severity</th>
+            <th scope="col">Field</th>
+            <th scope="col">Affected</th>
+            <th scope="col">Message</th>
+            <th scope="col">Suggested action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for f in results.findings %}
+          <tr>
+            <td>{{ f.check_id }}</td>
+            <td><span class="status-{{ f.severity }}">{{ f.severity }}</span></td>
+            <td>{{ f.field or 'n/a' }}</td>
+            <td>{{ f.affected_count }}</td>
+            <td>{{ f.message }}</td>
+            <td>{{ f.suggested_action or 'n/a' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contains information licensed under the Open Government Licence – Vancouver where demo data is used. The City of Vancouver does not endorse this tool.</p>
+  </footer>
+</body>
+</html>

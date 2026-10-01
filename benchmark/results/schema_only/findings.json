@@ -1,0 +1,69 @@
+[
+  {
+    "finding_id": "f98ee86acf89aad4",
+    "check_family": "schema",
+    "relation_id": null,
+    "dataset_id": "voting-places-2017",
+    "severity": "error",
+    "message": "Primary key 'facility_name' has 2 duplicate values",
+    "affected_count": 2,
+    "confidence": 0.92,
+    "evidence": {
+      "field": "facility_name",
+      "check_id": "uniqueness.primary_key",
+      "baseline": "internal",
+      "duplicate_values": [
+        "Vancouver City Hall"
+      ]
+    },
+    "actionable": null
+  },
+  {
+    "finding_id": "d8880a0cecbb0b75",
+    "check_family": "schema",
+    "relation_id": null,
+    "dataset_id": "voting-places-2017",
+    "severity": "error",
+    "message": "unique-error: Row at position \"53\" has unique constraint violation in field \"facility_name\" at position \"2\": the same as in the row at position 3",
+    "affected_count": 1,
+    "confidence": 0.8,
+    "evidence": {
+      "field": "facility_name",
+      "check_id": "unique-error",
+      "baseline": "frictionless"
+    },
+    "actionable": null
+  },
+  {
+    "finding_id": "c8319d281efca670",
+    "check_family": "schema",
+    "relation_id": null,
+    "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+    "severity": "error",
+    "message": "Primary key 'project_program_name' has 14 missing values",
+    "affected_count": 14,
+    "confidence": 0.92,
+    "evidence": {
+      "field": "project_program_name",
+      "check_id": "completeness.missing_primary_key",
+      "baseline": "internal"
+    },
+    "actionable": null
+  },
+  {
+    "finding_id": "75e5b8357476c433",
+    "check_family": "schema",
+    "relation_id": null,
+    "dataset_id": "2024-multi-year-capital-project-budget-requests-and-capital-expenditure-budget",
+    "severity": "error",
+    "message": "constraint-error: The cell \"\" in row at position \"31\" and field \"project_program_name\" at position \"4\" does not conform to a constraint: constraint \"required\" is \"True\"",
+    "affected_count": 14,
+    "confidence": 0.8,
+    "evidence": {
+      "field": "project_program_name",
+      "check_id": "constraint-error",
+      "baseline": "frictionless"
+    },
+    "actionable": null
+  }
+]
