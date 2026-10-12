@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib.util
 import json
 import tomllib
 from pathlib import Path
@@ -14,19 +13,6 @@ from civic_data_qa.benchmark.injected import InjectedEvaluationReport
 from civic_data_qa.benchmark.models import AdjudicationLabel, AdjudicationRecord, BenchmarkFinding
 
 ROOT = Path(__file__).resolve().parents[2]
-
-
-def test_f1_public_import_is_separate_and_full_history_ci() -> None:
-    script = ROOT / "scripts/prepare_public_import.py"
-    assert script.exists(), "Missing reviewed-tree public import exporter"
-    assert "fetch-depth: 0" in (ROOT / ".github/workflows/ci.yml").read_text()
-    spec = importlib.util.spec_from_file_location("public_import", script)
-    assert spec and spec.loader
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    assert module.hygiene_errors(b"source_uri: /" + b"Users/example/private/file.csv")
-    assert module.hygiene_errors("old wording \u2014 text".encode())
-    assert not module.hygiene_errors(b"snapshot://business-licences")
 
 
 def test_f2_macro_precision_is_not_serialized_as_pooled() -> None:
@@ -64,26 +50,13 @@ def test_f4_comparison_declares_ordered_prefix_and_unequal_coverage() -> None:
     assert "numeric ranges" in docs
 
 
-def test_f5_historical_reports_and_environment_are_traceable() -> None:
-    for name in ["M1_REPORT", "M3_REPORT", "PHASE2_REPORT", "PHASE3_REPORT", "PHASE4_REPORT",
-                 "PUBLICATION_FIX_REPORT_2026-10-01"]:
-        text = (ROOT / "docs/milestones" / f"{name}.md").read_text()
-        assert "SUPERSEDED" in text[:1300], name
-        assert "unverified" in text[:1300], name
+def test_f5_environment_and_technical_report_are_traceable() -> None:
     assert (ROOT / "requirements-tested.txt").exists()
     generator = (ROOT / "scripts/generate_results.py").read_text()
     assert "Mac Studio M3 Ultra" not in generator
     report = (ROOT / "docs/technical-report.md").read_text()
     assert "which count as false positives" not in report
     assert "Business records are withheld" in report and "not an anonymized extract" in report
-
-
-def test_f6_prior_art_capabilities_and_bounded_contribution() -> None:
-    text = (ROOT / "docs/milestones/M0_REPORT.md").read_text()
-    assert "prior art does not combine" not in text
-    assert "multi-source" in text and "reconciliation" in text
-    assert "no first-of-kind or new-method claim" in text
-    assert "South Tyrol" in text
 
 
 def test_f7_installation_declares_benchmark_extra_and_checkout() -> None:

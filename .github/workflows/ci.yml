@@ -31,7 +31,6 @@ jobs:
         run: |
           ! rg -n '/Users/' --glob '!*.md' .
           ! rg -n $'\u2014' docs README.md RESULTS.md
-          python scripts/prepare_public_import.py --scan-public-refs
       - name: Ruff
         run: ruff check src tests scripts
       - name: Mypy

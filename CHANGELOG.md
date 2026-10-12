@@ -1,10 +1,8 @@
 # Changelog
 
-## Publication corrections - 2026-10-01
+## Corrections - 2026-10-01
 
-Round 4 local changes, externally unverified: correct the OpenDataSoft connector label; apply guarded redirects to live benchmarks and snapshots; cap retry waits and elapsed retry budgets; create the standalone test temporary directory; emit actual bootstrap seeds; keep automatic findings' actionability null; restrict the public candidate's refs. See [current verification](docs/release-verification.md), [network limits](docs/network-policy.md), [Explore v2.1 reference](https://help.opendatasoft.com/apis/ods-explore-v2/), [HTTPX timeout reference](https://www.python-httpx.org/advanced/timeouts/) and [Git bundle reference](https://git-scm.com/docs/git-bundle).
-
-Local observations, externally unverified until reviewed: separate initial-public-import tooling and full-ref hygiene scans; explicit mean-run and pooled precision denominators; separate human actionability judgements; ordered-prefix schema-ablation scope; superseded milestone notices; collected run/environment receipts and tested constraints; bounded prior-art descriptions; benchmark installation extra and isolated wheel check. The canonical current result is `RESULTS.md`. Historical entries below describe earlier stages and do not establish current evaluation claims.
+Corrected the connector label. Added guarded redirects and capped retry waits. Recorded the bootstrap seeds. Marked automatic findings as not reviewed for actionability. Current results are in RESULTS.md.
 
 Public data provenance and terms: [Vancouver catalogue](https://opendata.vancouver.ca/), [Open Government Licence - Vancouver](https://opendata.vancouver.ca/pages/licence/). Existing multi-source capabilities are credited in `docs/technical-report.md`, with primary sources.
 

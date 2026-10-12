@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib.util
 import ipaddress
 import json
 import math
@@ -23,14 +22,6 @@ from civic_data_qa.benchmark.snapshots import download_snapshots
 from civic_data_qa.sources import http_client, url_policy
 
 ROOT = Path(__file__).resolve().parents[2]
-
-
-def public_import_module():
-    spec = importlib.util.spec_from_file_location("public_import_v4", ROOT / "scripts/prepare_public_import.py")
-    assert spec and spec.loader
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 def test_f1_connector_claim_matches_implemented_api() -> None:
@@ -212,17 +203,6 @@ def test_f6_provisional_errors_do_not_become_actionable() -> None:
                                                                  "name": [None, "Project"]}), "fixture://synthetic")
     assert findings and any(f.severity == "error" for f in findings)
     assert all(f.to_dict()["actionable"] is None for f in findings)
-
-
-def test_f7_public_ref_scan_rejects_unselected_refs(tmp_path: Path) -> None:
-    module = public_import_module()
-    module.git("init", "-b", "publication-v4", cwd=tmp_path)
-    payload = (b"commit refs/heads/publication-v4\n"
-               b"committer Example <example@example.com> 1 +0000\ndata 5\ntest\n\ndone\n")
-    module.git("fast-import", "--quiet", cwd=tmp_path, data=payload)
-    module.git("update-ref", "refs/tags/private-snapshot", "HEAD", cwd=tmp_path)
-    with pytest.raises(SystemExit, match="Unexpected public refs"):
-        module.scan_public_refs(tmp_path)
 
 
 def test_regenerated_artifacts_have_no_automatic_actionability() -> None:

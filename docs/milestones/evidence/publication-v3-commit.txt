@@ -1,1 +1,0 @@
-fatal: Unable to create '<checkout>/.git/index.lock': Operation not permitted

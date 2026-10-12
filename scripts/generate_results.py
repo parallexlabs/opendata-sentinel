@@ -38,7 +38,7 @@ def main() -> int:
     digest = (ROOT / "docs/PREREGISTRATION.sha256").read_text().split()[0]
     lines = [
         "# Current results: Vancouver snapshots and synthetic business fixtures",
-        "", f"Code version: {data['code_version']}. Preregistration SHA-256: `{digest}`.", "",
+        "", f"Code version: {data['code_version']}. Benchmark plan SHA-256: `{digest}`.", "",
         "These are locally reproduced mixed-input demonstration results, externally unverified "
         "and not independently established municipal accuracy. Business rows are generated fixtures; "
         "the other five tables are Vancouver snapshots. "

@@ -29,7 +29,7 @@ Attribution statement (required by OGL-Vancouver):
 
 All real business records, their samples and finding evidence are withheld from this public package. The earlier minimized representation retained linkable identifiers and did not establish anonymity. The [Vancouver licence](https://opendata.vancouver.ca/pages/licence/) excludes personal information; a catalogue licence label does not independently resolve that exemption. [Short-term rental rules](https://vancouver.ca/doing-business/short-term-rentals.aspx) concern individual operators and principal residences. This package makes no redistribution-clearance claim for the withheld business data.
 
-Original source evidence is preserved only in excluded local state and private source history. Publication requires the separate sanitized initial import; older branches and bundles must not be mirrored. The public business demonstration measures only fixture behaviour, not municipal business-data quality.
+Real business licence records are not included in this repository.
 
 ## Result derivatives
 

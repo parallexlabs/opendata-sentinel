@@ -4,4 +4,4 @@ OpenData Sentinel is an engineering demonstration of configured dataset checks a
 
 See [Quickstart](quickstart.md) to run your first check.
 
-Start with the [required-field workflow](case-study.md), [release verification](release-verification.md) and [current results](results.md). Earlier milestones remain in the [audit-history appendix](AUDIT_HISTORY.md).
+Start with the [required-field workflow](case-study.md), [release verification](release-verification.md) and [current results](results.md).

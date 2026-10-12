@@ -7,7 +7,7 @@
 
 # OpenData Sentinel
 
-OpenData Sentinel (`opendata-sentinel`) is an open-source data quality assurance tool by **ParalleX Labs Inc.** It helps Canadian municipalities validate open datasets before and after publication, and includes a **versioned cross-dataset consistency benchmark** on five Vancouver snapshots plus generated business fixtures.
+OpenData Sentinel (`opendata-sentinel`) is an open-source data quality assurance tool by **ParalleX Labs Inc.** It is designed to help Canadian municipalities check open datasets before and after publication, and includes a **versioned cross-dataset consistency benchmark** on five Vancouver snapshots plus generated business fixtures.
 
 This is an engineering demonstration using attributed non-business open data and synthetic business rows. Real business records are withheld. Domain actionability is unreviewed. No clients or production deployments are claimed.
 

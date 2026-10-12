@@ -1,6 +1,6 @@
-# Preregistration: Vancouver cross-dataset consistency benchmark
+# Benchmark plan (written after first results)
 
-**Registered:** 2026-09-30  
+**Written:** 2026-09-30, after the first benchmark results. It was not filed with a registry.
 **Integrity hash:** see `docs/PREREGISTRATION.sha256`
 
 ## Question

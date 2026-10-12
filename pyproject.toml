@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "opendata-sentinel"
 version = "0.4.0"
-description = "Open-data quality assurance for Canadian municipalities"
+description = "Designed to help Canadian municipalities check open datasets before and after publication."
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.11"

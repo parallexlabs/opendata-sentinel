@@ -29,6 +29,6 @@ pyright src
 mkdocs build --strict
 ```
 
-The `dev` extra includes Hatchling, constrained by `requirements-tested.txt`, because the wheel smoke uses `--no-build-isolation`. The complete smoke workflow requires `.[dev,benchmark]`, not the benchmark extra alone. See [pip build isolation](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/#disabling-build-isolation). Local installation results are recorded in the [current fix report](milestones/PUBLICATION_FIX_REPORT_V4_2026-10-01.md); a fresh public-index download remains unverified if network access is unavailable.
+The `dev` extra includes Hatchling, constrained by `requirements-tested.txt`, because the wheel smoke uses `--no-build-isolation`. The complete smoke workflow requires `.[dev,benchmark]`, not the benchmark extra alone. See [pip build isolation](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/#disabling-build-isolation). A fresh public-index download remains unverified if network access is unavailable.
 
 The one-command regeneration includes the generated business fixtures and all examples. Their source paths are relative and example timestamps are fixed fixture dates. Real business records are withheld; see [data decision](DATA_LICENCES.md).

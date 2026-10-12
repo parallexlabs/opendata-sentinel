@@ -4,4 +4,4 @@ Local implementation observations, externally unverified: `scripts/generate_busi
 
 Every identifier has a SYNTHETIC prefix. Dates are fixed literals from 2000 and 2001; status and categories are fixture constants. Two rows use a deliberately unmatched synthetic area. Three rows have empty dates, one in the deliberately excluded synthetic category, leaving two date-rule violations. Sample business names are deliberately empty, producing a completeness demonstration. This is generated data, not an anonymized extract or a municipal defect claim.
 
-The snapshot and CSV are rebuilt by the one-command pipeline. Snapshot hashes and all result evidence are regenerated. Real business originals, previous results and samples are excluded from the public import and preserved privately. [Data decision](DATA_LICENCES.md) explains why a dataset-wide [OGL-Vancouver label](https://opendata.vancouver.ca/pages/licence/) did not resolve person-linkability.
+Real business records are not included.

@@ -1,6 +1,6 @@
 # Current results: Vancouver snapshots and synthetic business fixtures
 
-Code version: 0.4.0. Preregistration SHA-256: `f7a8617de74ce8d9d5ebe8ad35bd8e027be311313a1a1ffea5d7c8c294477e1e`.
+Code version: 0.4.0. Benchmark plan SHA-256: `ac23751eab4cbfc443600d49ab1b80d7b11607e43eccadafdf8b852cecf8ec3b`.
 
 These are locally reproduced mixed-input demonstration results, externally unverified and not independently established municipal accuracy. Business rows are generated fixtures; the other five tables are Vancouver snapshots. Numerical evidence: `benchmark/results/comparison.json`; execution and environment: `benchmark/results/run_receipt.json`. Public source data and redistribution terms: [Vancouver catalogue](https://opendata.vancouver.ca/) and [Open Government Licence - Vancouver](https://opendata.vancouver.ca/pages/licence/).
 
