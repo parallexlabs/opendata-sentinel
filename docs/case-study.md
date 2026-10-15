@@ -1,5 +1,7 @@
 # Inspect a required-field workflow
 
+![Pipeline diagram: load inputs, run single-file YAML checks or manifest cross-dataset checks, write results.json, score findings, then HTML report and CSV backlog.](media/workflow.svg)
+
 This is an engineering demonstration. The result descriptions below are local observations, externally unverified until independently reproduced. Domain actionability, client use and deployment are unverified. The [sample inventory](sample-provenance.md) supplies provenance and licences; the business fixture and its derivatives use [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 In five minutes, inspect the [rule configuration](assets/examples/business-licences.yml), [generated findings JSON](assets/examples/business-licences-results.json), [full HTML report](assets/examples/business-licences-report.html) and [prioritized backlog CSV](assets/examples/business-licences-backlog.csv). All four files are served with this documentation; no separate report hosting is claimed.
