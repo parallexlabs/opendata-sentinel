@@ -7,6 +7,69 @@
 
 # OpenData Sentinel
 
+OpenData Sentinel, by ParalleX Labs Inc., is an open-source data quality demonstration. It checks single files and links between related datasets, and writes a report and ranked fix list, unreviewed for real use. Its tests use five Vancouver snapshots and synthetic rows. For Canadian municipal open data teams that publish datasets and want problems found before users find them.
+
+![Live demo page with an embedded HTML report listing failed checks and scores on synthetic business licence rows.](docs/media/hero-report.png)
+
+**[Try it live](https://parallexlabs.github.io/opendata-sentinel/)** (static demo in `docs/`; see [docs/PAGES_TODO.md](docs/PAGES_TODO.md) for enabling GitHub Pages)
+
+[![Screen recording of the OpenData Sentinel demo](docs/media/demo-preview.gif)](https://parallexlabs.github.io/opendata-sentinel/media/demo.mp4)
+
+Benchmark precision on frozen snapshots (mean run precision, 95% CI):
+
+![Bar chart of mean run precision for schema-only, relations and combined benchmark modes.](docs/media/chart-precision.png)
+
+![Bar chart of injected defect recall for schema-only, relations and combined benchmark modes.](docs/media/chart-recall.png)
+
+| Example | Preview |
+|---|---|
+| Synthetic business licences report | ![HTML report table with a required-field error on businessname.](docs/media/example-business-report.png) |
+| Demo CSV report | ![HTML report for the small demo CSV sample.](docs/media/example-demo-report.png) |
+| Local area GeoJSON report | ![HTML report for the local area boundary GeoJSON sample.](docs/media/example-local-area-report.png) |
+| Findings detail | ![Zoomed findings table showing severities and affected row counts.](docs/media/example-findings-table.png) |
+| Component flow | ![Diagram of sources, checks, results file and HTML or CSV outputs.](docs/media/architecture.png) |
+
+### How it works
+
+1. Load a dataset: CSV, GeoJSON, Shapefile, GeoPackage, or a portal link (OpenDataSoft, ArcGIS or CKAN).
+2. Inspect it: schema, row count and coordinate system.
+3. One dataset: run the checks set in a YAML configuration file.
+4. Or, for related datasets: run the cross-dataset and drift checks from the benchmark manifest on frozen snapshots.
+5. From a results file, score findings with rule-based weights (not calibrated probabilities).
+6. Generate a static HTML report.
+7. Export a prioritized fix list as a CSV backlog (its practical usefulness is unreviewed).
+
+### Architecture
+
+![OpenData Sentinel flow from data sources through the check engine to results.json and HTML or CSV outputs.](docs/media/architecture.png)
+
+- **Sources and loaders** read local files or public portal APIs under the [network policy](docs/network-policy.md).
+- **Check engine** runs YAML-configured single-table checks or manifest-driven benchmark relations.
+- **Reporters** write `results.json`, HTML reports and CSV backlogs from the same results file.
+
+### Design choices
+
+- **Frozen Vancouver snapshots plus synthetic business rows** keep the cross-dataset benchmark reproducible without publishing real business records.
+- **Rule-based finding scores** rank issues for review; they are not calibrated probabilities.
+- **Separate single-dataset and benchmark paths** share one results format so reports and backlogs use the same commands.
+- **Read-only connectors** inspect portals but never write back to publishers.
+
+### Why it matters
+
+Its benchmark also checks whether related open datasets agree with each other, not only each file alone.
+
+### Showcase media
+
+Regenerate hero images, charts, captions and the demo video with:
+
+```bash
+python3 scripts/make_showcase_media.py
+```
+
+Large video files are written to `showcase-media/` (not committed). Copy `showcase-media/demo.mp4` into `docs/media/` before enabling GitHub Pages if you want the README video link to resolve on the site.
+
+---
+
 OpenData Sentinel (`opendata-sentinel`) is an open-source data quality assurance tool by **ParalleX Labs Inc.** It is designed to help Canadian municipalities check open datasets before and after publication, and includes a **versioned cross-dataset consistency benchmark** on five Vancouver snapshots plus generated business fixtures.
 
 This is an engineering demonstration using attributed non-business open data and synthetic business rows. Real business records are withheld. Domain actionability is unreviewed. No clients or production deployments are claimed.

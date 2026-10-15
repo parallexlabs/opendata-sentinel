@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenData Sentinel live demo</title>
+  <style>
+    :root { color-scheme: light; --text: #1a1a1a; --bg: #fff; --border: #4a4a4a; --link: #005fcc; }
+    body { font-family: system-ui, sans-serif; line-height: 1.5; color: var(--text); background: var(--bg); margin: 0; }
+    header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+    main { max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem 2rem; }
+    h1 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+    nav ul { list-style: none; padding: 0; margin: 0.75rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+    nav a { color: var(--link); text-decoration: underline; }
+    iframe { width: 100%; height: 640px; border: 1px solid var(--border); margin-top: 1rem; }
+    footer { font-size: 0.9rem; border-top: 1px solid var(--border); padding: 1rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>OpenData Sentinel</h1>
+    <p>Static demo using synthetic business rows and Vancouver open data snapshots shipped in the repository. No install required.</p>
+    <nav aria-label="Demo reports">
+      <ul>
+        <li><a href="assets/examples/business-licences-report.html">Business licences report</a></li>
+        <li><a href="assets/examples/business-licences-backlog.csv">Prioritized backlog (CSV)</a></li>
+        <li><a href="case-study.md">Case study (Markdown)</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Sample HTML report</h2>
+    <p>Required-field check on the bundled synthetic business table. Domain actionability is unreviewed.</p>
+    <iframe src="assets/examples/business-licences-report.html" title="OpenData Sentinel HTML report for synthetic business licences"></iframe>
+  </main>
+  <footer>
+    <p>ParalleX Labs Inc. Engineering demonstration. The City of Vancouver does not endorse this tool.</p>
+  </footer>
+</body>
+</html>
