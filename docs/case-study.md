@@ -1,6 +1,6 @@
 # Inspect a required-field workflow
 
-![Pipeline diagram: load inputs, run single-file YAML checks or manifest cross-dataset checks, write results.json, score findings, then HTML report and CSV backlog.](media/workflow.svg)
+![Flowchart: inputs are loaded, then checked one file at a time with YAML rules or across related datasets by the benchmark; both paths write results.json, from which the report command makes an HTML report and the backlog command makes a CSV fix list ranked by severity and rows affected.]](media/workflow.svg)
 
 This is an engineering demonstration. The result descriptions below are local observations, externally unverified until independently reproduced. Domain actionability, client use and deployment are unverified. The [sample inventory](sample-provenance.md) supplies provenance and licences; the business fixture and its derivatives use [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
