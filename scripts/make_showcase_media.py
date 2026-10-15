@@ -6,18 +6,33 @@ from __future__ import annotations
 import argparse
 import http.server
 import json
+import os
 import shutil
 import socket
 import subprocess
 import sys
 import threading
-import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
-FFMPEG = Path("/Users/studio/.homebrew/bin/ffmpeg")
-EXIFTOOL = Path("/opt/homebrew/bin/exiftool")
+CHROME = Path(
+    os.environ.get(
+        "CHROME_BIN",
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    )
+)
+
+
+def _tool(name: str, env_key: str) -> Path | None:
+    override = os.environ.get(env_key)
+    if override:
+        return Path(override)
+    found = shutil.which(name)
+    return Path(found) if found else None
+
+
+FFMPEG = _tool("ffmpeg", "FFMPEG")
+EXIFTOOL = _tool("exiftool", "EXIFTOOL")
 MEDIA = ROOT / "docs" / "media"
 SHOWCASE_MEDIA = ROOT / "showcase-media"
 EXAMPLES = ROOT / "docs" / "assets" / "examples"
@@ -121,7 +136,7 @@ def _architecture_svg(path: Path) -> None:
 
 
 def _strip_images(paths: list[Path]) -> None:
-    if EXIFTOOL.is_file():
+    if EXIFTOOL is not None and EXIFTOOL.is_file():
         subprocess.run(
             [str(EXIFTOOL), "-all=", "-overwrite_original", *[str(p) for p in paths]],
             check=True,
@@ -136,7 +151,7 @@ def main() -> int:
     if not CHROME.is_file():
         print("Chrome not found for headless screenshots", file=sys.stderr)
         return 1
-    if not args.skip_video and not FFMPEG.is_file():
+    if not args.skip_video and (FFMPEG is None or not FFMPEG.is_file()):
         print("ffmpeg not found", file=sys.stderr)
         return 1
 
@@ -188,6 +203,8 @@ def main() -> int:
         server.shutdown()
         return 0
 
+    ffmpeg_bin = str(FFMPEG)
+
     frame_urls = [
         base + "index.html",
         base + "assets/examples/business-licences-report.html",
@@ -219,7 +236,7 @@ def main() -> int:
     silent_mp4 = SHOWCASE_MEDIA / "demo-silent.mp4"
     subprocess.run(
         [
-            str(FFMPEG),
+            str(FFMPEG),  # type: ignore[arg-type]
             "-y",
             "-f",
             "concat",
@@ -249,7 +266,7 @@ def main() -> int:
     # Burn captions into the video
     subprocess.run(
         [
-            str(FFMPEG),
+            str(FFMPEG),  # type: ignore[arg-type]
             "-y",
             "-i",
             str(silent_mp4),
@@ -274,7 +291,7 @@ def main() -> int:
     preview_gif = MEDIA / "demo-preview.gif"
     subprocess.run(
         [
-            str(FFMPEG),
+            str(FFMPEG),  # type: ignore[arg-type]
             "-y",
             "-i",
             str(demo_mp4),
