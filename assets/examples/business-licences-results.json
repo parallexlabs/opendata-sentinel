@@ -1,0 +1,62 @@
+{
+  "config_hash": "33af278674bbcd86",
+  "dataset_id": "business-licences",
+  "findings": [
+    {
+      "affected_count": 0,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "licencenumber",
+      "message": "Required field 'licencenumber' is fully populated",
+      "severity": "pass",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 200,
+      "check_id": "completeness.required_fields",
+      "evidence": {},
+      "field": "businessname",
+      "message": "Required field 'businessname' has 200 null values",
+      "severity": "error",
+      "standards_tags": [
+        "ISO19157-2:2016:DQ_CompletenessOmission"
+      ],
+      "suggested_action": "Populate null values in 'businessname'"
+    },
+    {
+      "affected_count": 0,
+      "check_id": "uniqueness.primary_key",
+      "evidence": {},
+      "field": "licencenumber",
+      "message": "Primary key 'licencenumber' is unique",
+      "severity": "pass",
+      "standards_tags": [
+        "local:configured_key_uniqueness"
+      ],
+      "suggested_action": null
+    },
+    {
+      "affected_count": 0,
+      "check_id": "privacy.pattern_email_phone",
+      "evidence": {},
+      "field": null,
+      "message": "No email or phone patterns detected",
+      "severity": "pass",
+      "standards_tags": [
+        "local:contact_pattern_indicator"
+      ],
+      "suggested_action": null
+    }
+  ],
+  "run_at": "2026-10-01T00:00:00+00:00",
+  "schema_version": "1.0.0",
+  "source_uri": "samples/business-licences.csv",
+  "summary": {
+    "error": 1,
+    "pass": 3,
+    "warning": 0
+  }
+}

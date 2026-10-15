@@ -1,0 +1,28 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.000
+Open the live demo page with the bundled synthetic business report.
+
+00:00:05.000 --> 00:00:10.000
+The HTML report lists each check, severity and affected row counts.
+
+00:00:10.000 --> 00:00:15.000
+The required business name field fails on all 200 synthetic rows.
+
+00:00:15.000 --> 00:00:20.000
+Other configured checks pass on the same table.
+
+00:00:20.000 --> 00:00:25.000
+A second sample report covers the small CSV demo dataset.
+
+00:00:25.000 --> 00:00:30.000
+GeoJSON boundary checks appear in the local area report.
+
+00:00:30.000 --> 00:00:35.000
+Benchmark precision bars come from frozen Vancouver snapshots.
+
+00:00:35.000 --> 00:00:40.000
+Recall bars summarize injected defect detection in the benchmark.
+
+00:00:40.000 --> 00:00:45.000
+The workflow loads data, runs checks, then writes results and reports.

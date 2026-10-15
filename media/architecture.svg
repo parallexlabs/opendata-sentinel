@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" role="img">
+<title>OpenData Sentinel components</title>
+<rect width="720" height="320" fill="#ffffff"/>
+<text x="360" y="28" text-anchor="middle" font-size="16" font-family="system-ui,sans-serif">OpenData Sentinel</text>
+<rect x="40" y="50" width="140" height="56" fill="#e8f0fe" stroke="#1a1a1a"/>
+<text x="110" y="82" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif">Sources</text>
+<rect x="220" y="50" width="140" height="56" fill="#e8f0fe" stroke="#1a1a1a"/>
+<text x="290" y="82" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif">Check engine</text>
+<rect x="400" y="50" width="140" height="56" fill="#e8f0fe" stroke="#1a1a1a"/>
+<text x="470" y="82" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif">results.json</text>
+<rect x="580" y="50" width="100" height="56" fill="#e8f0fe" stroke="#1a1a1a"/>
+<text x="630" y="82" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif">Reports</text>
+<line x1="180" y1="78" x2="220" y2="78" stroke="#1a1a1a" marker-end="url(#m)"/>
+<line x1="360" y1="78" x2="400" y2="78" stroke="#1a1a1a"/>
+<line x1="540" y1="78" x2="580" y2="78" stroke="#1a1a1a"/>
+<rect x="120" y="150" width="200" height="56" fill="#fff3e0" stroke="#1a1a1a"/>
+<text x="220" y="175" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Single-dataset YAML</text>
+<text x="220" y="192" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">checks</text>
+<rect x="400" y="150" width="200" height="56" fill="#fff3e0" stroke="#1a1a1a"/>
+<text x="500" y="175" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Benchmark manifest</text>
+<text x="500" y="192" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">cross-dataset rules</text>
+<line x1="220" y1="106" x2="220" y2="150" stroke="#1a1a1a"/>
+<line x1="500" y1="106" x2="500" y2="150" stroke="#1a1a1a"/>
+<rect x="260" y="240" width="200" height="48" fill="#e8f5e9" stroke="#1a1a1a"/>
+<text x="360" y="268" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif">HTML report and CSV backlog</text>
+<line x1="630" y1="106" x2="360" y2="240" stroke="#1a1a1a"/>
+</svg>
