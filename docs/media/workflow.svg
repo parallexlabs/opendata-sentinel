@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img">
 <title>OpenData Sentinel check pipeline</title>
 <rect width="800" height="420" fill="#ffffff"/>
-<text x="400" y="30" text-anchor="middle" font-size="17" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Quality check pipeline</text>
+<text x="400" y="26" text-anchor="middle" font-size="17" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Quality check pipeline</text>
 <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" fill="#1a1a1a"/></marker></defs>
 <rect x="16" y="92" width="150" height="76" fill="#e8f0fe" stroke="#1a1a1a" rx="5"/>
 <text x="91" y="117" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Inputs</text>
@@ -11,33 +11,41 @@
 <text x="267" y="117" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Load dataset</text>
 <text x="267" y="135" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">inspect: schema,</text>
 <text x="267" y="153" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rows and CRS</text>
-<rect x="370" y="50" width="205" height="84" fill="#fff3e0" stroke="#1a1a1a" rx="5"/>
-<text x="472.5" y="79" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Single-file checks</text>
-<text x="472.5" y="97" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rules from a YAML file</text>
-<text x="472.5" y="115" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(check command)</text>
-<rect x="370" y="150" width="205" height="100" fill="#fff3e0" stroke="#1a1a1a" rx="5"/>
-<text x="472.5" y="178" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Cross-dataset checks</text>
-<text x="472.5" y="196" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">manifest relations and drift,</text>
-<text x="472.5" y="214" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rule-based confidence</text>
-<text x="472.5" y="232" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(benchmark run)</text>
-<rect x="602" y="108" width="182" height="64" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
-<text x="693" y="136" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">results.json</text>
-<text x="693" y="154" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">findings and summary</text>
-<rect x="420" y="300" width="170" height="64" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
-<text x="505" y="328" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">HTML report</text>
-<text x="505" y="346" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(report command)</text>
-<rect x="606" y="286" width="178" height="96" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
-<text x="695" y="312" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">CSV fix backlog</text>
-<text x="695" y="330" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">ranked by severity and</text>
-<text x="695" y="348" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rows affected</text>
-<text x="695" y="366" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(backlog command)</text>
+<rect x="370" y="40" width="205" height="84" fill="#fff3e0" stroke="#1a1a1a" rx="5"/>
+<text x="472.5" y="69" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Single-file checks</text>
+<text x="472.5" y="87" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rules from a YAML file</text>
+<text x="472.5" y="105" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(check command)</text>
+<rect x="602" y="40" width="182" height="92" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
+<text x="693" y="66" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Results file</text>
+<text x="693" y="84" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(check --output):</text>
+<text x="693" y="102" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">dataset_id, summary,</text>
+<text x="693" y="120" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">findings</text>
+<rect x="420" y="150" width="170" height="64" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
+<text x="505" y="178" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">HTML report</text>
+<text x="505" y="196" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(report command)</text>
+<rect x="606" y="150" width="178" height="96" fill="#e8f5e9" stroke="#1a1a1a" rx="5"/>
+<text x="695" y="176" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">CSV fix backlog</text>
+<text x="695" y="194" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">ranked by severity and</text>
+<text x="695" y="212" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rows affected</text>
+<text x="695" y="230" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(backlog command)</text>
+<rect x="370" y="262" width="205" height="100" fill="#fff3e0" stroke="#1a1a1a" rx="5"/>
+<text x="472.5" y="290" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Cross-dataset checks</text>
+<text x="472.5" y="308" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">manifest relations and drift,</text>
+<text x="472.5" y="326" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">rule-based confidence</text>
+<text x="472.5" y="344" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">(benchmark run)</text>
+<rect x="602" y="262" width="182" height="110" fill="#f3e5f5" stroke="#1a1a1a" rx="5"/>
+<text x="693" y="288" text-anchor="middle" font-size="14" font-weight="600" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Benchmark outputs</text>
+<text x="693" y="306" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">in benchmark/results/:</text>
+<text x="693" y="324" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">findings.json (a list),</text>
+<text x="693" y="342" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">metadata.json and</text>
+<text x="693" y="360" text-anchor="middle" font-size="12.5" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">evaluation.json</text>
 <line x1="166" y1="130" x2="190" y2="130" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<polyline points="342,130 356,130 356,92 368,92" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<polyline points="356,130 356,200 368,200" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<polyline points="575,92 588,92 588,132 600,132" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<polyline points="575,200 588,200 588,150 600,150" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<line x1="693" y1="172" x2="693" y2="262" stroke="#1a1a1a" stroke-width="1.4" fill="none"/>
-<polyline points="693,262 505,262 505,298" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<line x1="693" y1="262" x2="693" y2="284" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
-<text x="400" y="404" text-anchor="middle" font-size="12.5" fill="#333" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">Both paths write the same results format, so the report and backlog commands work on either.</text>
+<polyline points="342,130 356,130 356,82 368,82" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<polyline points="356,130 356,312 368,312" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<line x1="575" y1="82" x2="600" y2="82" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<line x1="693" y1="132" x2="693" y2="140" stroke="#1a1a1a" stroke-width="1.4" fill="none"/>
+<polyline points="693,140 505,140 505,148" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<line x1="693" y1="140" x2="693" y2="148" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<line x1="575" y1="312" x2="600" y2="312" stroke="#1a1a1a" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+<text x="400" y="398" text-anchor="middle" font-size="12.5" fill="#333" font-family="system-ui,-apple-system,Helvetica,Arial,sans-serif">The report and backlog commands read the check command's results file. The benchmark writes its own files.</text>
 </svg>
