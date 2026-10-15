@@ -11,6 +11,8 @@ OpenData Sentinel, by ParalleX Labs Inc., is an open-source data quality demonst
 
 ![Live demo page with an embedded HTML report listing failed checks and scores on synthetic business licence rows.](docs/media/hero-report.png)
 
+How it was made: its code and documentation were written with AI coding assistants and reviewed, tested and revised by Amir Daneshpajouh.
+
 **[Try it live](https://parallexlabs.github.io/opendata-sentinel/)** (static demo in `docs/`; see [docs/PAGES_TODO.md](docs/PAGES_TODO.md) for enabling GitHub Pages)
 
 [![Screen recording of the OpenData Sentinel demo](docs/media/demo-preview.gif)](https://parallexlabs.github.io/opendata-sentinel/media/demo.mp4)
