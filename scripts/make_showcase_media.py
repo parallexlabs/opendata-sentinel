@@ -236,7 +236,7 @@ def main() -> int:
     silent_mp4 = SHOWCASE_MEDIA / "demo-silent.mp4"
     subprocess.run(
         [
-            str(FFMPEG),  # type: ignore[arg-type]
+            ffmpeg_bin,
             "-y",
             "-f",
             "concat",
@@ -266,7 +266,7 @@ def main() -> int:
     # Burn captions into the video
     subprocess.run(
         [
-            str(FFMPEG),  # type: ignore[arg-type]
+            ffmpeg_bin,
             "-y",
             "-i",
             str(silent_mp4),
@@ -291,7 +291,7 @@ def main() -> int:
     preview_gif = MEDIA / "demo-preview.gif"
     subprocess.run(
         [
-            str(FFMPEG),  # type: ignore[arg-type]
+            ffmpeg_bin,
             "-y",
             "-i",
             str(demo_mp4),
