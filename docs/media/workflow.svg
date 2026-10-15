@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" role="img">
+<title>OpenData Sentinel check pipeline</title>
+<rect width="800" height="420" fill="#ffffff"/>
+<text x="400" y="26" text-anchor="middle" font-size="15" font-family="system-ui,sans-serif" font-weight="600">Quality check pipeline</text>
+<defs>
+<marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+<polygon points="0 0, 8 3, 0 6" fill="#1a1a1a"/>
+</marker>
+</defs>
+<rect x="24" y="52" width="168" height="64" fill="#e8f0fe" stroke="#1a1a1a" rx="4"/>
+<text x="108" y="78" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Inputs</text>
+<text x="108" y="96" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">files or portal URLs</text>
+<rect x="220" y="52" width="148" height="64" fill="#e8f0fe" stroke="#1a1a1a" rx="4"/>
+<text x="294" y="78" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Load dataset</text>
+<text x="294" y="96" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">inspect optional</text>
+<rect x="396" y="44" width="172" height="80" fill="#fff3e0" stroke="#1a1a1a" rx="4"/>
+<text x="482" y="72" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Single-file checks</text>
+<text x="482" y="90" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">YAML ruleset</text>
+<text x="482" y="106" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">(check command)</text>
+<rect x="396" y="140" width="172" height="80" fill="#fff3e0" stroke="#1a1a1a" rx="4"/>
+<text x="482" y="168" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Cross-dataset checks</text>
+<text x="482" y="186" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">manifest relations</text>
+<text x="482" y="202" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">and drift (benchmark run)</text>
+<rect x="596" y="96" width="180" height="72" fill="#e8f5e9" stroke="#1a1a1a" rx="4"/>
+<text x="686" y="122" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">results.json</text>
+<text x="686" y="140" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">findings and summary</text>
+<rect x="220" y="248" width="160" height="64" fill="#f3e5f5" stroke="#1a1a1a" rx="4"/>
+<text x="300" y="274" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">Score findings</text>
+<text x="300" y="292" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">rule-based weights</text>
+<rect x="420" y="248" width="148" height="64" fill="#e8f5e9" stroke="#1a1a1a" rx="4"/>
+<text x="494" y="274" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">HTML report</text>
+<text x="494" y="292" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">report command</text>
+<rect x="596" y="248" width="180" height="64" fill="#e8f5e9" stroke="#1a1a1a" rx="4"/>
+<text x="686" y="274" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif">CSV fix backlog</text>
+<text x="686" y="292" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif">backlog command</text>
+<line x1="192" y1="84" x2="220" y2="84" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="368" y1="84" x2="396" y2="84" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="368" y1="84" x2="380" y2="180" stroke="#1a1a1a"/>
+<line x1="380" y1="180" x2="396" y2="180" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="568" y1="84" x2="596" y2="120" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="568" y1="180" x2="580" y2="132" stroke="#1a1a1a"/>
+<line x1="580" y1="132" x2="596" y2="132" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="686" y1="168" x2="686" y2="220" stroke="#1a1a1a"/>
+<line x1="686" y1="220" x2="300" y2="220" stroke="#1a1a1a"/>
+<line x1="300" y1="220" x2="300" y2="248" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="380" y1="280" x2="420" y2="280" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<line x1="568" y1="280" x2="596" y2="280" stroke="#1a1a1a" marker-end="url(#arrow)"/>
+<text x="400" y="360" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="#444">Either path writes the same results format for reports and backlog.</text>
+</svg>
