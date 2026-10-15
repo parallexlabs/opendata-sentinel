@@ -33,7 +33,7 @@ Benchmark precision on frozen snapshots (mean run precision, 95% CI):
 
 ### How it works
 
-![Flowchart: inputs are loaded, then checked one file at a time with YAML rules or across related datasets by the benchmark; both paths write results.json, from which the report command makes an HTML report and the backlog command makes a CSV fix list ranked by severity and rows affected.]](docs/media/workflow.svg)
+![Flowchart: inputs are loaded and inspected, then take one of two paths. The check command applies YAML rules to one file and writes a results file, which the report command turns into an HTML report and the backlog command into a CSV fix list ranked by severity and rows affected. The benchmark checks related datasets and writes its own findings, metadata and evaluation files.](docs/media/workflow.svg)
 
 1. Load a dataset: CSV, GeoJSON, Shapefile, GeoPackage, or a portal link (OpenDataSoft, ArcGIS or CKAN).
 2. Inspect it: schema, row count and coordinate system.
