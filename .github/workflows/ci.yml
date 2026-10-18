@@ -27,10 +27,13 @@ jobs:
           sudo mv "$RUNNER_TEMP/gitleaks" /usr/local/bin/gitleaks
       - name: Secret scan
         run: gitleaks detect --source . --no-banner --redact
+      - name: Install ripgrep
+        run: sudo apt-get update -q && sudo apt-get install -y -q ripgrep
       - name: Path and style hygiene
         run: |
-          ! rg -n '/Users/' --glob '!*.md' .
-          ! rg -n $'\u2014' docs README.md RESULTS.md
+          command -v rg
+          if rg -n '/Users/' --glob '!*.md' .; then echo "personal path found"; exit 1; fi
+          if rg -n $'\u2014' docs README.md RESULTS.md; then echo "em dash found"; exit 1; fi
       - name: Ruff
         run: ruff check src tests scripts
       - name: Mypy
