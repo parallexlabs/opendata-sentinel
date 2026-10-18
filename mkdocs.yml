@@ -17,6 +17,9 @@ nav:
   - Network policy: network-policy.md
   - API reference: api.md
 docs_dir: docs
+# docs/index.html is the GitHub Pages landing page; MkDocs builds its own index from index.md.
+exclude_docs: |
+  index.html
 theme:
   name: material
 plugins:
