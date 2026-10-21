@@ -97,10 +97,11 @@ The portal connector implements [OpenDataSoft Explore v2.1](https://help.opendat
 
 ## Data and licence
 
-Software, documentation and synthetic examples in this repository are created by ParalleX Labs Inc. Vancouver open datasets and derivatives are published under the [Vancouver Open Government Licence](https://opendata.vancouver.ca/pages/licence/) with attribution (see `docs/DATA_LICENCES.md`). This repository contains no client data or confidential third-party material.
+Software, documentation and synthetic examples in this repository are created by ParalleX Labs Inc. Vancouver open datasets and derivatives are published under the [Open Government Licence – Vancouver](https://opendata.vancouver.ca/pages/licence/), which requires this attribution statement:
 
+> Contains information licensed under the Open Government Licence – Vancouver.
 
-Vancouver samples are under the [Vancouver Open Government Licence](https://opendata.vancouver.ca/pages/licence/). See [sample provenance](docs/sample-provenance.md) for attribution text.
+See `docs/DATA_LICENCES.md` and [sample provenance](docs/sample-provenance.md). This repository contains no client data or confidential third-party material.
 
 ## Limitations
 
