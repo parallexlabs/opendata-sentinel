@@ -7,7 +7,7 @@
 
 # OpenData Sentinel
 
-Do checks across related open datasets catch defects that single-file schema checks miss? In this benchmark, yes, and partly by design: its five handcrafted defect families, injected into five frozen Vancouver snapshots and synthetic business rows, were built as two schema cases and three relation cases. Schema checks alone confirmed 10 of 25 injected defects (recall 0.40, 95% interval 0.20 to 0.60), relation checks alone 15 of 25 (0.60, 0.40 to 0.80), and the combined checks all 25, with a mean run precision of 0.86 (0.76 to 0.94). The intervals depend on these defect families, one injection seed and these snapshots, and the benchmark plan was written after the first results, so this is not a municipal accuracy rate. Values: [RESULTS.md](RESULTS.md) and [benchmark/results/comparison.json](benchmark/results/comparison.json).
+Do relation checks catch defects that single-file schema checks miss? In this benchmark, yes, and partly by design: its five handcrafted defect families were injected into three of the five frozen Vancouver snapshots and into the synthetic business rows, and were built as two schema cases and three relation cases. Schema checks alone confirmed 10 of 25 injected defects (recall 0.40, 95% interval 0.20 to 0.60), relation checks alone 15 of 25 (0.60, 0.40 to 0.80), and the combined checks all 25, with a mean run precision of 0.86 (0.76 to 0.94). Of the 15 relation-check catches, 5 are across related datasets, 5 come from a rule inside the single business table and 5 come from comparing two copies of the same dataset. The intervals depend on these defect families, one injection seed and these snapshots, and the benchmark plan was written after the first results, so this is not a municipal accuracy rate. Values: [RESULTS.md](RESULTS.md) and [benchmark/results/comparison.json](benchmark/results/comparison.json).
 
 ![Bar chart of injected defect recall for schema-only, relations and combined benchmark modes.](docs/media/chart-recall.png)
 
@@ -36,12 +36,12 @@ Finding scores are rule-based weights for review order, not calibrated probabili
 | Capability | Generic tools (see sources) | Portal metadata tools (e.g. Neumaier et al.) | This Vancouver benchmark package |
 |---|---|---|---|
 | Single-table schema validation | Yes (Frictionless, Pandera, GE, dbt, Soda) | Partial (metadata) | Yes (internal + Frictionless baseline on frozen snapshots) |
-| Cross-dataset relation checks | Yes (Frictionless foreign keys; arbitrary Pandera checks; GE multi-source comparison; dbt relationships; Soda reconciliation) | No (record-level) | Yes (manifest-defined municipal rules on frozen snapshots) |
-| Cross-year snapshot drift (2023 vs 2024 capital budget) | Possible with custom rules | No | Yes (packaged rule + evaluation) |
+| Cross-dataset relation checks | Yes (Frictionless foreign keys; arbitrary Pandera checks; GE multi-source comparison; dbt relationships; Soda reconciliation) | No (record-level) | Yes (manifest-defined rules on frozen snapshots; two of three run on the synthetic business fixture) |
+| Cross-year snapshot drift (2023 vs 2024 capital budget) | Possible with custom rules | No | Yes (packaged rule + evaluation; its one report on real data is provisionally labelled benign, pending human review) |
 | Same-dataset schema drift (snapshot b copy) | Possible with custom rules | No | Yes (injected benchmark only) |
 | Heuristic finding scores | Varies by tool | No | Yes (rule-based weights; not calibrated probabilities) |
 | Held-out evaluation workflow | Varies by tool | No | Yes (provisional labels pending human review) |
-| Live municipal portal integration | Varies by connector | Catalogue crawl | Yes (Vancouver API; opt-in tests) |
+| Reads a live municipal open data API | Varies by connector | Catalogue crawl | Yes (reads the City of Vancouver's public open data API, read-only; one opt-in network test) |
 
 Sources: [Frictionless](https://framework.frictionlessdata.io/) ([foreign keys](https://specs.frictionlessdata.io/table-schema/#foreign-keys)), [Pandera checks](https://pandera.readthedocs.io/en/stable/checks.html), [Great Expectations multi-source comparison](https://greatexpectations.io/expectations/expect_query_results_to_match_comparison/), [dbt tests](https://docs.getdbt.com/docs/build/data-tests), [Soda reconciliation](https://docs.soda.io/reference/contract-language-reference/reconciliation-checks), [Neumaier et al., ACM JDIQ 10.1145/2964909](https://doi.org/10.1145/2964909), [Kubler et al., DGO 10.1145/2912160.2912167](https://doi.org/10.1145/2912160.2912167), [Ding et al., GeoInformatica 10.1007/s10707-019-00384-9](https://doi.org/10.1007/s10707-019-00384-9).
 
@@ -97,11 +97,13 @@ The portal connector implements [OpenDataSoft Explore v2.1](https://help.opendat
 
 ## Data and licence
 
-Software, documentation and synthetic examples in this repository are created by ParalleX Labs Inc. Vancouver open datasets and derivatives are published under the [Open Government Licence – Vancouver](https://opendata.vancouver.ca/pages/licence/), which requires this attribution statement:
+Software, documentation and synthetic examples in this repository are created by ParalleX Labs Inc. and licensed under Apache-2.0 (see `LICENSE` and `NOTICE`). Vancouver open datasets and derivatives are published under the [Open Government Licence – Vancouver](https://opendata.vancouver.ca/pages/licence/), which requires this attribution statement:
 
 > Contains information licensed under the Open Government Licence – Vancouver.
 
-See `docs/DATA_LICENCES.md` and [sample provenance](docs/sample-provenance.md). This repository contains no client data or confidential third-party material.
+The City of Vancouver does not endorse this tool or its results.
+
+See `docs/DATA_LICENCES.md` and [sample provenance](docs/sample-provenance.md). This repository contains no confidential or non-public data.
 
 ## Limitations
 
